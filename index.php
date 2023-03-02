@@ -13,6 +13,27 @@
     <title>index</title>
 </head>
 <body>
-    
+    <?php
+        // fetch current "site" (or set to "home" if not defined)        
+        $site = $_GET["site"] ?? "home";
+
+        // for security reasone:  check if $site is in a list of available sites
+        $sites = [ "home", "link", "impressum", "login"];
+        if (!in_array($site, $sites)) {
+            $error = "Seite nicht gefunden - " . $site;
+            $site = "error";            
+        }
+
+        // render nav bar
+        include_once "inc/navigation.php";
+    ?>
+
+    <div class="container-fluid">
+    <?php
+
+        // render site here ...
+        include_once "sites/" . $site . ".php";
+    ?>
+    </div>
 </body>
 </html>

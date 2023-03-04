@@ -32,7 +32,7 @@
     <?php
 
         // render site here ...
-        include_once "sites/" . $site . ".php";
+        include_once "inc/" . $site . ".php";
     ?>
     </div>
 </body>

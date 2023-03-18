@@ -12,6 +12,9 @@
                 <a class="nav-link fw-bold text-primary" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
+            <a class="nav-link fw-bold text-primary <?= ($site == "product") ? "active" : "" ?>" href="?site=product">Product</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link fw-bold" href="#">Link</a>
             </li>
             <li class="nav-item dropdown">

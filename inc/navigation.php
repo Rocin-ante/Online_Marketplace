@@ -22,7 +22,7 @@
                     Dropdown
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item <?= ($site == "my_order") ? "active" : "" ?>" href="?site=my_order">My Order</a></li>
+                    <li><a class="dropdown-item <?= ($site == "order_product") ? "active" : "" ?>" href="?site=order_product">Order Product</a></li>
                     <li><a class="dropdown-item" href="#">Action</a></li>
                     <li><a class="dropdown-item" href="#">Another action</a></li>
                     <li><hr class="dropdown-divider"></li>

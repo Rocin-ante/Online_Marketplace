@@ -35,5 +35,9 @@
         include_once "inc/" . $site . ".php";
     ?>
     </div>
+
+    <?php
+        include_once "inc/footer.php";
+    ?>
 </body>
 </html>

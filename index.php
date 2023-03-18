@@ -26,7 +26,9 @@
             $error = "Seite nicht gefunden - " . $site;
             $site = "error";            
         }
-
+    ?>
+    
+    <?php
         // render nav bar
         include_once "inc/navigation.php";
     ?>

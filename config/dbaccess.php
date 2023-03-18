@@ -4,7 +4,7 @@
 $hostname = "localhost";
 $username = "admin";
 $password = "admin";
-$database = "online_market";
+$database = "online_marketplace";
 $conn = mysqli_connect($hostname, $username, $password, $database);
 if (!$conn)
 {

@@ -22,6 +22,7 @@
 
         // for security reasone:  check if $site is in a list of available sites
         $sites = [ "home", "link", "impressum", "login","my_order"];
+        $sites = [ "home", "link", "impressum", "login", "my_order", "product"];
         if (!in_array($site, $sites)) {
             $error = "Seite nicht gefunden - " . $site;
             $site = "error";            

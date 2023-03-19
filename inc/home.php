@@ -76,5 +76,3 @@
         </div>
     </div>
 </div>
-        
-<script src="./res/bootstrap/js/bootstrap.bundle.min.js"></script>

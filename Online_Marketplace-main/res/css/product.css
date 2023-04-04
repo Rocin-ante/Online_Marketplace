@@ -1,0 +1,23 @@
+body{
+    background: url(../img/wallhaven-nrwjpq_1920x1080.png);
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed;
+    background-size: cover;
+}
+h1{
+    font-size: xx-large;
+    text-align: center;
+}
+h2{
+    color: gold;
+    font-size: xx-large;
+    text-align: center;
+}
+img{
+    display: block;
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+

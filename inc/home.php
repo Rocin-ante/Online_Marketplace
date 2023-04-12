@@ -73,6 +73,15 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div id="storeInfoBox" class="text-white p-4">
+                        
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<script src="res/bootstrap/js/jquery-3.6.4.min.js"></script>
+<script src="res/js/marketscript.js" type="text/javascript"></script>  

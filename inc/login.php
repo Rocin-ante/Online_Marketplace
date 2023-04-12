@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="res/bootstrap/css/bootstrap.min.css">
-    <title>Document</title>
-</head>
-<body>
-    <!-- 登录页面 Landing Page -->
-    <?php
-        // render nav bar
-        include_once "inc/navigation.php";
-    ?>
-    
-<link rel="stylesheet" href="../Hotel/res/css/signin.css">   
+
 <section class="vh-100">
     <div class="container-fluid">
         <div class="row">
@@ -82,10 +66,3 @@
             return ture;
         }
     </script>
-    <?php
-        include_once "inc/footer.php";
-    ?>
-    <script src="res/bootstrap/js/jquery-3.6.4.min.js"></script>
-    <script src="res/bootstrap/js/bootstrap.bundle.min.js"></script>    
-</body>
-</html>

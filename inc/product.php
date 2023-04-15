@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../Online_Marketplace/res/bootstrap/css/home.css">
+<link rel="stylesheet" href="../Online_Marketplace/res/css/product.css">
 <h2>Welcome!</h2>
 <body>
 <section>
@@ -6,9 +6,7 @@
 <div class="main_img_part-home">
 <div class="part" style="width: 100%">
 <a href="">
-<center>
-<img src="../Online_Marketplace/res/img/wallhaven-q66pyq_1448x320.png" alt class="part-bg" ></a>
-</center>
+<img src="../Online_Marketplace/res/img/toy4.png" alt class="part-bg" ></a>
 <h5 class="h5">
 </h5>
 </div>

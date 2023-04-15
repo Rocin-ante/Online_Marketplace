@@ -1,11 +1,12 @@
 body{
-    background: url(../img/wallhaven-nrwjpq_1920x1080.png);
+    background: url(../img/toy5.png);
     background-repeat: no-repeat;
     background-position: center top;
     background-attachment: fixed;
     background-size: cover;
 }
 h1{
+    color: ivory;
     font-size: xx-large;
     text-align: center;
 }

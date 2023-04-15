@@ -1,33 +1,55 @@
-h1 {
-	text-align: center;
-	margin-top: 20px;
-}
-
-table {
-    width: 70%;
-    height: 50px;
-    alingn:center;
-    border: 2;
-	/*以上补充css*/
-	border-collapse: collapse;
+.orders {
+	max-width: 800px;
 	margin: 0 auto;
-	background-color: white;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	padding: 20px;
 }
-
-th {
-	background-color: #4CAF50;
-	color: white;
-	font-weight: bold;
-	padding: 10px;
-}
-
-td {
-	padding: 10px;
-	border: 1px solid #ddd;
+  
+  h2 {
 	text-align: center;
+	font-size: 24px;
+	margin-bottom: 20px;
 }
-
-tr:nth-child(even) {
+  
+  table {
+	border-collapse: collapse;
+	width: 100%;
+}
+  
+  th, td {
+	padding: 10px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+  
+  th {
 	background-color: #f2f2f2;
+	font-weight: normal;
 }
+  
+  .status {
+	text-transform: uppercase;
+	font-weight: bold;
+	border-radius: 4px;
+	padding: 6px 12px;
+}
+  
+  .shipped {
+	color: green;
+	background-color: #c8e6c9;
+}
+  
+  .pending {
+	color: orange;
+	background-color: #ffe0b2;
+}
+  
+  .cancelled {
+	color: red;
+	background-color: #ffcdd2;
+}
+  
+  a {
+	color: black;
+	text-decoration: none;          /*清除超链接下划线  Hyperlink-Unterstreichung löschen */
+}
+  

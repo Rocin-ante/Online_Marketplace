@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1
--- 生成日期： 2023-03-10 11:43:10
--- 服务器版本： 10.4.27-MariaDB
--- PHP 版本： 8.1.12
+-- 生成日期： 2023-04-27 12:02:21
+-- 服务器版本： 10.4.28-MariaDB
+-- PHP 版本： 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -100,9 +100,16 @@ CREATE TABLE `store` (
   `store_id` int(11) NOT NULL,
   `store_name` varchar(50) NOT NULL,
   `store_logo` varchar(50) NOT NULL,
-  `store_description` varchar(500) NOT NULL,
+  `store_description` varchar(9999) NOT NULL,
   `store_contact` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- 转存表中的数据 `store`
+--
+
+INSERT INTO `store` (`store_id`, `store_name`, `store_logo`, `store_description`, `store_contact`) VALUES
+(1, 'Online Marketplace', 'res//img//logo.png', 'Welcome to our online marketplace! Our platform is designed to help sellers sell their products and services online. For sellers who lack the resources and expertise to build and manage their own e-commerce website, we offer an easy-to-use interface to build and manage their merchandise while providing customers with a convenient and user-friendly shopping experience. On our platform, you can find a wide variety of products and services, from fashion apparel to home furnishings, electronics to gourmet delicacies. Whether you are a buyer or a seller, we are committed to providing you with an enjoyable and convenient online shopping and selling experience. Join our online marketplace to discover more business opportunities and expand your business!', '+1-800-123-4567 info@examplemarketplace.com');
 
 -- --------------------------------------------------------
 
@@ -199,7 +206,7 @@ ALTER TABLE `product`
 -- 使用表AUTO_INCREMENT `store`
 --
 ALTER TABLE `store`
-  MODIFY `store_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `store_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用表AUTO_INCREMENT `users`

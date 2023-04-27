@@ -10,14 +10,11 @@ function loaddata() {
         dataType: "json",
         success: function (response) {
             console.log(response);
-            var storeInfo = response;
-            console.log(storeInfo);
-            var storeDescription = storeInfo.description;
+            var storeDescription = response[0].store_description;
             console.log(storeDescription);
-            var storeContact = storeInfo.contact;
-            console.log(storeContact);
+            var storeContact = response[0].store_contact;
             var storeInfoBox = $('#storeInfoBox');
-            storeInfoBox.html('<p>' + storeInfo + '</p>');
+            storeInfoBox.html('<p>' + storeDescription + '</p><p style="color: orange;">Contact: ' + storeContact + '</p>');
         },
         error: function(xhr, status, error) {
             console.log("AJAX error: " + status + " - " + error);

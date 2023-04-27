@@ -15,7 +15,7 @@ class DataHandler {
             array_push($store, $res);
         }
         mysqli_close($conn);
-        $storeDate = json_encode($store);
+        $storeDate = $store; //json_encode($store);
         return $storeDate;
     }
 }

@@ -27,7 +27,7 @@
             <div class="pt-1 mb-4">
                 <button type="submit" class="btn btn-warning butten" formaction="ins/post_signin.php">Log in</button>
             </div>
-
+            <p class="small mb-5 pb-lg-2"><a class="text-primary nav-link <?= ($site == "Anzeige") ? "active" : "" ?>" href="?site=Anzeige"> Warum Login?</a></p>
             <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Forgot password?</a></p>
             <p>Don't have an account? </p>
             <a class="text-primary  nav-link <?= ($site == "account") ? "active" : "" ?>" href="?site=account" > Register here</a>

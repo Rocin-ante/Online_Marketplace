@@ -84,4 +84,4 @@
 </div>
 
 <script src="res/bootstrap/js/jquery-3.6.4.min.js"></script>
-<script src="res/js/marketscript.js" type="text/javascript"></script>  
+<script src="res/js/homepage_script.js" type="text/javascript"></script>  

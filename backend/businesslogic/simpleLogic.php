@@ -12,6 +12,9 @@ class SimpleLogic {
             case "queryStore":
                 $res = $this->dh->queryStore();
                 break;
+            case "queryProductbyName":
+                $res = $this->dh->queryProductbyName($param);
+                break;
             default:
                 $res = null;
                 break;

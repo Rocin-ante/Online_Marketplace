@@ -12,7 +12,7 @@ function emptyInputSignup($First_name,$Last_name,$email,$uid,
             return $result;
         }
 
-
+        
 // Überprüfen !!! , Ob der Benutzername in ordnung ist.
 function invalidUid($uid){
             $result;

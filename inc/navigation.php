@@ -26,7 +26,6 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item <?= ($site == "order_product") ? "active" : "" ?>" href="?site=order_product">Order Product</a></li>
-                    <li><a class="dropdown-item <?= ($site == "order_details") ? "active" : "" ?>" href="?site=order_details">Order Details</a></li>
                     <li><a class="dropdown-item" href="#">Another action</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -37,9 +36,11 @@
             </li>
         </ul>
         <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control me-2" type="search" placeholder="Search Product" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
     </div>
   </div>
 </nav>
+
+<script src="res/js/search_script.js" type="text/javascript"></script>  

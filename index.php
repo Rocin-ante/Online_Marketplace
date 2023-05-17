@@ -20,7 +20,7 @@
         $sites = [ "home", "link", "impressum", "login", "order_product", "product","Anzeige","account","Impressum","order_details"];
         if (!in_array($site, $sites)) {
             $error = "Seite nicht gefunden - " . $site;
-            $site = "error";            
+            $site = "error";     
         }
     ?>
     

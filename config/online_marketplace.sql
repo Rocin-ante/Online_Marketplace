@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1
--- 生成日期： 2023-03-10 11:43:10
+-- 生成日期： 2023-05-15 12:12:35
 -- 服务器版本： 10.4.27-MariaDB
 -- PHP 版本： 8.1.12
 
@@ -90,6 +90,18 @@ CREATE TABLE `product` (
   `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- 转存表中的数据 `product`
+--
+
+INSERT INTO `product` (`product_id`, `product_name`, `product_description`, `product_image`, `product_price`, `category_id`) VALUES
+(1, 'Smart Watch X1', 'Smart Watch X1 is a powerful smart watch with multiple functions such as health monitoring, notification reminders, and exercise tracking.', '', 199, 0),
+(2, 'Wireless Headphones Z2', 'Wireless Earphone Z2 is a high-fidelity sound quality wireless earphone, using the latest Bluetooth technology, allowing you to enjoy music anywhere.', '', 149, 0),
+(3, 'Sports Windbreaker', 'Sports Windbreaker is a lightweight, windproof and waterproof jacket. Made of high-quality fabric, it\'s breathable and comfortable for outdoor sports and everyday wear.', '', 79, 0),
+(4, 'Business Shirt', 'Business Shirt is a classic and elegant men\'s shirt for formal occasions and business events.', '', 59, 0),
+(5, 'A Beginner\'s Guide to Psychology', 'An Introductory Guide to Psychology is an easy-to-understand introductory book on psychology, which aims to help readers understand the basic principles and concepts of psychology.', '', 20, 0),
+(6, 'Science Fiction Collection \"Mystery of the Future\"', 'Science fiction collection \"Mysteries of the Future\" is a collection of short science fiction stories created by many well-known writers.', '', 15, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -100,9 +112,16 @@ CREATE TABLE `store` (
   `store_id` int(11) NOT NULL,
   `store_name` varchar(50) NOT NULL,
   `store_logo` varchar(50) NOT NULL,
-  `store_description` varchar(500) NOT NULL,
+  `store_description` varchar(9999) NOT NULL,
   `store_contact` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- 转存表中的数据 `store`
+--
+
+INSERT INTO `store` (`store_id`, `store_name`, `store_logo`, `store_description`, `store_contact`) VALUES
+(1, 'Online Marketplace', 'res//img//logo.png', 'Welcome to our online marketplace! Our platform is designed to help sellers sell their products and services online. For sellers who lack the resources and expertise to build and manage their own e-commerce website, we offer an easy-to-use interface to build and manage their merchandise while providing customers with a convenient and user-friendly shopping experience. On our platform, you can find a wide variety of products and services, from fashion apparel to home furnishings, electronics to gourmet delicacies. Whether you are a buyer or a seller, we are committed to providing you with an enjoyable and convenient online shopping and selling experience. Join our online marketplace to discover more business opportunities and expand your business!', '+1-800-123-4567 info@examplemarketplace.com');
 
 -- --------------------------------------------------------
 
@@ -193,13 +212,13 @@ ALTER TABLE `order`
 -- 使用表AUTO_INCREMENT `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- 使用表AUTO_INCREMENT `store`
 --
 ALTER TABLE `store`
-  MODIFY `store_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `store_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用表AUTO_INCREMENT `users`

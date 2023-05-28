@@ -10,12 +10,17 @@ class DataHandler {
         $result = array();
         $res = $this->getProductbyName();
         foreach ($res as $val) {
-            if ($val->name == $name) {
-                array_push($result, $val);
+            if ($val->product_name == $name) {
+                $result[] = $val;
             }
         }
-        return $result;
-    }
+        if (empty($result)) {
+            // 返回空数组作为结果
+            return null; // 或者返回其他自定义的标识，比如 "NoData" 等
+        } else {
+            return $result;
+        }
+    }  
 
     public function queryProduct($category) {
         $result = array();

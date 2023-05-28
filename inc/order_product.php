@@ -21,17 +21,17 @@
           <tr>
             <td>#12345</td>
             <td class="status shipped">Shipped</td>
-            <td><a class="dropdown-item <?= ($site == "order_details") ? "active" : "" ?>" href="?site=order_details">View Details</a></td>
+            <td><a class="dropdown-item <?= ($site == "order_details") ? "active" : "" ?>" href="?site=order_details">『View Details』</a></td>
           </tr>
           <tr>
             <td>#67890</td>
             <td class="status pending">Pending</td>
-            <td><a class="dropdown-item <?= ($site == "order_details") ? "active" : "" ?>" href="?site=order_details">View Details</a></td>
+            <td><a class="dropdown-item <?= ($site == "order_details") ? "active" : "" ?>" href="?site=order_details">『View Details』</a></td>
           </tr>
           <tr>
             <td>#24680</td>
             <td class="status cancelled">Cancelled</td>
-            <td><a class="dropdown-item <?= ($site == "order_details") ? "active" : "" ?>" href="?site=order_details">View Details</a></td>
+            <td><a class="dropdown-item <?= ($site == "order_details") ? "active" : "" ?>" href="?site=order_details">『View Details』</a></td>
           </tr>
         </tbody>
         </tbody>

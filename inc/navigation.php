@@ -27,6 +27,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item <?= ($site == "order_product") ? "active" : "" ?>" href="?site=order_product">Order Product</a></li>
                     <li><a class="dropdown-item <?= ($site == "checkout") ? "active" : "" ?>" href="?site=checkout">Checkout</a></li>
+                    <li><a class="dropdown-item <?= ($site == "product_upload") ? "active" : "" ?>" href="?site=product_upload">Product Upload</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>

@@ -1,0 +1,61 @@
+#meinTitel  {
+    font-style: italic; 
+    padding: 30px;
+    font-weight: bold;     
+}
+body {
+    background-image: url('../img/LemonCocktail.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.bonner {
+    margin-top: 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, .3);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, .7);
+    backdrop-filter: blur(3px);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, .2);
+}
+.red {
+    color: red;
+}
+.bonner h1 {
+    font-size: 40px;
+    margin: 30px;
+}
+.bonner form div {
+    font-size: 20px;
+    margin: 20px;
+}
+.bonner form div input {
+    text-indent: 0.5em;
+    border: 0px solid rgba(255, 255, 255, .3);
+    border-radius: 10px;
+}
+.butten {
+    width: 247px;
+    margin: 20px;
+}
+.text {
+    font-size: 10px;
+}
+label {
+    font-size: 20px;
+    margin: 5px;
+}
+.fileinput {
+    width: 247px;
+    font-size: 20px;
+    margin: 0 auto;
+    text-indent: 0.1em;
+    border: 0px solid rgba(255, 255, 255, .3);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, .7);
+}
+@media screen and (max-width: 400px){
+    .butten {
+        margin-left: auto;
+    }
+}

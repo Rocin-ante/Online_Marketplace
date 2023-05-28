@@ -145,11 +145,11 @@ INSERT INTO `store` (`store_id`, `store_name`, `store_logo`, `store_description`
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
+  `passwort` varchar(100) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `shipping_address` varchar(200) NOT NULL,
-  `payment_method` int(11) NOT NULL
+  `payment_method` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --

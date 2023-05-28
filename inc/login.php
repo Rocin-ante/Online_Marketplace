@@ -7,17 +7,17 @@
                 </div>
 
                 <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-                    <form style="width: 23rem;" action="../config/login.inc.php" method="post" onsubmit="return check()">
+                    <form style="width: 23rem;" action="backend/user/login.inc.php" method="POST" onsubmit="return check()">
                         <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
 
                         <div class="form-outline mb-4">
-                            <input type="email" name="uid" id="form2Example18" class="form-control form-control-lg" />
-                            <label class="form-label" for="form2Example18">Email address</label>
+                            <input type="email" name="email" id="email" class="form-control form-control-lg" />
+                            <label class="form-label" for="email">Email address</label>
                         </div>
 
                         <div class="form-outline mb-4">
-                            <input type="password" name="pwd" id="form2Example28" class="form-control form-control-lg" />
-                            <label class="form-label" for="form2Example28">Password</label>
+                            <input type="password" name="pwd" id="pwd" class="form-control form-control-lg" />
+                            <label class="form-label" for="pwd">Password</label>
                         </div>
 
                         <div class="pt-1 mb-4">

@@ -1,4 +1,3 @@
-
 <section class="h-100 bg-dark">
   <form action="backend/user/Register.inc.php" method="POST">
     <div class="container py-5 h-100">
@@ -15,21 +14,6 @@
               <div class="card-body p-md-5 text-black">
                 <h3 class="mb-5 text-uppercase">Register</h3>
 
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="first_name" name="first_name" class="form-control form-control-lg" maxlength="20" required />
-                      <label class="form-label" for="first_name" name="first_name">First name</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="last_name" name="last_name" class="form-control form-control-lg" required   />
-                      <label class="form-label" for="last_name" name="last_name">Last name</label>
-                    </div>
-                  </div>
-                </div>
-
                 <div class="form-outline mb-4">
                     <input type="text" id="email"name="email"  class="form-control form-control-lg" required/>
                     <label class="form-label" for="email"name="email"   >E-Mail-Adresse</label>
@@ -43,6 +27,20 @@
                 <div class="form-outline mb-4">
                   <input type="password" id="pwdRepeat" name="pwdRepeat" class="form-control form-control-lg" required />
                   <label class="form-label" for="pwdRepeat" name="pwdRepeat">Password repeat</label>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" id="first_name" name="first_name" class="form-control form-control-lg" maxlength="20" required />
+                      <label class="form-label" for="first_name" name="first_name">First name</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" id="last_name" name="last_name" class="form-control form-control-lg" required   />
+                      <label class="form-label" for="last_name" name="last_name">Last name</label>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="form-outline mb-4">

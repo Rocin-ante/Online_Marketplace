@@ -2,19 +2,19 @@
 
 if (isset($_POST["submit"])) {
     
-    $uid = $_POST["uid"];
+    $email = $_POST["email"];
     $pwd = $_POST["pwd"];
 
     require_once '../config/dbaccess.php';
     require_once 'creat.konto.php';
 
-    if(emptyInputLogin($uid, $pwd) !== false){
-        header("location: ../inc/Anmeldung.php?error=emptyinput");
+    if(emptyInputLogin($email, $pwd) !== false){
+        header("location: ../inc/login.php?error=emptyinput");
         exit();
     }
-    loginUser($conn, $uid,$pwd);
+    loginUser($conn, $email,$pwd);
 }
 else{
-    header("location: ../inc/Anmeldung.php");
+    header("location: ../../index.php");
     exit();
 }

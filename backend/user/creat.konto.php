@@ -1,8 +1,8 @@
 <?php
 // Überprüfen !!! , Ob notwendige infomationen fehlen 
-function emptyInputSignup($first_name,$last_name,$email,$pwd,$pwdRepeat){
+function emptyInputSignup($first_name,$last_name,$email,$pwd,$pwdRepeat,$shipping_address,$payment_method){
             $result;
-            if (empty($first_name) || empty($last_name) || empty($email) || empty($pwd) ||empty($pwdRepeat) ) {
+            if (empty($first_name) || empty($last_name) || empty($email) ||empty($pwd) ||empty($pwdRepeat) ||empty($shipping_address) ||empty($payment_method) ) {
                 $result = true;
             }
             else{
@@ -13,7 +13,7 @@ function emptyInputSignup($first_name,$last_name,$email,$pwd,$pwdRepeat){
 
         
 // Überprüfen !!! , Ob der Benutzername in ordnung ist.
-function invalidUid($uid){
+/*function invalidUid($uid){
             $result;
             if (!preg_match("/^[a-zA-Z0-9]*$/",$uid) ) {
                 $result = true;
@@ -22,7 +22,7 @@ function invalidUid($uid){
                 $result = false;
             }
             return $result;
-        }
+        }*/
 // Überprüfen !!! , Ob email in ordnung ist.
 function invalidEmail($email){
             $result;
@@ -46,8 +46,8 @@ function pwdMatch($pwd,$pwdRepeat){
             return $result;
         }
 //Überprüfen !!! , ob Konto und email korrekt sind.
-function uidExists($conn, $uid,$email){
-            $sql ="SELECT * FROM users WHERE users_uid = ? OR users_email = ?;";
+function uidExists($conn, $email){
+            $sql ="SELECT * FROM users WHERE email = ?;";
             $stmt = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($stmt, $sql)) {
                 header("location:../inc/account.php?error=stmtfailed");
@@ -55,7 +55,7 @@ function uidExists($conn, $uid,$email){
             }
         
 
-        mysqli_stmt_bind_param($stmt, "ss", $uid, $email);
+        mysqli_stmt_bind_param($stmt, "s", $email);
         mysqli_stmt_execute($stmt);
 
         $resultData = mysqli_stmt_get_result($stmt);
@@ -69,7 +69,7 @@ function uidExists($conn, $uid,$email){
         mysqli_stmt_close($stmt);
     }
 //Überprüfen des Administratorkennworts und der Kontonnummer
-    function AdminExists($conn, $uid,$pwd){
+/*    function AdminExists($conn,$uid,$pwd){
         $sql ="SELECT * FROM admin WHERE admin_usersname = ? OR admin_pwd = ?;";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -90,9 +90,9 @@ function uidExists($conn, $uid,$email){
         return $result;
     }
     mysqli_stmt_close($stmt);
-}   
-function createUser($conn, $First_name, $Last_name,$email,$uid,$Anrede,$pwd){
-        $sql ="INSERT INTO users (users_First_name,users_Last_name,users_email,users_uid,Anrede,users_pwd) VALUES (?,?,?,?,?,?);";
+}  */ 
+function createUser($conn, $email,$pwd,$first_name,$last_name,$shipping_address,$payment_method){
+        $sql ="INSERT INTO users (email,passwort,first_name,last_name,shipping_address,payment_method) VALUES (?,?,?,?,?,?);";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
             header("location:../inc/account.php?error=stmtfailed");
@@ -101,16 +101,16 @@ function createUser($conn, $First_name, $Last_name,$email,$uid,$Anrede,$pwd){
     
         $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "ssssss", $First_name, $Last_name,$email,$uid,$Anrede,$hashedPwd);
+    mysqli_stmt_bind_param($stmt, "ssssss", $email,$hashedPwd,$first_name,$last_name,$shipping_address,$payment_method);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location:../inc/Register.php?error=none");
+    header("location:../../index.php?erflog!!!");
             exit();
    
 }
-function emptyInputLogin($uid,$pwd){
+function emptyInputLogin($email,$pwd){
             $result;
-            if (empty($uid)||empty($pwd)) {
+            if (empty($email)||empty($pwd)) {
                 $result = true;
             }
             else{
@@ -119,29 +119,29 @@ function emptyInputLogin($uid,$pwd){
             return $result;
         }
     
-function loginUser($conn, $uid,$pwd){
-    $uidExists = uidExists($conn, $uid,$uid);
+function loginUser($conn, $email,$pwd){
+    $emailExists = uidExists($conn, $email,$pwd);
 
-    if($uidExists == false){
-        header("location: ../inc/login.php?error=UidExists");
+    if($emailExists == false){
+        header("location: ../../inc/login.php?error=EmailExists");
         exit();
     }
-    $pwdHashed = $uidExists["users_pwd"];
+    $pwdHashed = $emailExists["users_pwd"];
     $checkPwd = password_verify($pwd, $pwdHashed);
 
     if($checkPwd === false){
-        header("location: ../inc/login.php?error=FlaschPwd");
+        header("location: ../../inc/login.php?error=FlaschPwd");
         exit();
     }
     else if ($checkPwd === true ) {
         session_start();
-        $_SESSION["userid"] = $uidExists["users_id"];
-        $_SESSION["useruid"] = $uidExists["users_uid"];
-        header("location:../inc/index.php");
+        $_SESSION["userid"] = $emailExists["user_id"];
+        $_SESSION["email"] = $emailExists["email"];
+        header("location:../../index.php?erflog!!!");
         exit();
     }
 }
-function loginAdmin($conn, $uid,$pwd){
+/*function loginAdmin($conn, $uid,$pwd){
     $uidExists = AdminExists($conn, $uid,$uid);
 
     $pwdin = $uidExists["admin_pwd"];
@@ -158,3 +158,4 @@ function loginAdmin($conn, $uid,$pwd){
         exit();
     }
 }
+*/

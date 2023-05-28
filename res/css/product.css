@@ -1,3 +1,10 @@
+body {
+    background-image: url('../img/LemonCocktail.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
 .select-box {
     width: 100%;
     max-width: 300px;
@@ -18,5 +25,9 @@
 .product-price {
     font-weight: bold;
     color: red;
-  }
-  
+}
+
+.product-card {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+}

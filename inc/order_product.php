@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="../ONLINE_MARKETPLACE/res/css/order_product.css">
-<!DOCTYPE html>
+
 <html>
   <head>
     <meta charset="UTF-8">

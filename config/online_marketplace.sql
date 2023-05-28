@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1
--- 生成日期： 2023-05-15 12:12:35
--- 服务器版本： 10.4.27-MariaDB
--- PHP 版本： 8.1.12
+-- 生成日期： 2023-05-28 13:29:09
+-- 服务器版本： 10.4.28-MariaDB
+-- PHP 版本： 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -47,6 +47,16 @@ CREATE TABLE `category` (
   `parent_category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- 转存表中的数据 `category`
+--
+
+INSERT INTO `category` (`category_id`, `category_name`, `parent_category_id`) VALUES
+(0, 'all', 0),
+(1, 'electronics', 0),
+(2, 'clothing', 0),
+(3, 'books', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -84,7 +94,7 @@ CREATE TABLE `order_product` (
 CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `product_name` varchar(50) NOT NULL,
-  `product_description` varchar(250) NOT NULL,
+  `product_description` varchar(999) NOT NULL,
   `product_image` varchar(100) NOT NULL,
   `product_price` int(11) NOT NULL,
   `category_id` int(11) NOT NULL
@@ -95,12 +105,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_name`, `product_description`, `product_image`, `product_price`, `category_id`) VALUES
-(1, 'Smart Watch X1', 'Smart Watch X1 is a powerful smart watch with multiple functions such as health monitoring, notification reminders, and exercise tracking.', '', 199, 0),
-(2, 'Wireless Headphones Z2', 'Wireless Earphone Z2 is a high-fidelity sound quality wireless earphone, using the latest Bluetooth technology, allowing you to enjoy music anywhere.', '', 149, 0),
-(3, 'Sports Windbreaker', 'Sports Windbreaker is a lightweight, windproof and waterproof jacket. Made of high-quality fabric, it\'s breathable and comfortable for outdoor sports and everyday wear.', '', 79, 0),
-(4, 'Business Shirt', 'Business Shirt is a classic and elegant men\'s shirt for formal occasions and business events.', '', 59, 0),
-(5, 'A Beginner\'s Guide to Psychology', 'An Introductory Guide to Psychology is an easy-to-understand introductory book on psychology, which aims to help readers understand the basic principles and concepts of psychology.', '', 20, 0),
-(6, 'Science Fiction Collection \"Mystery of the Future\"', 'Science fiction collection \"Mysteries of the Future\" is a collection of short science fiction stories created by many well-known writers.', '', 15, 0);
+(1, 'Headphones', 'These headphones are a high-quality audio device designed to provide excellent sound quality and a comfortable wearing experience. It uses advanced audio technology with superior audio resolution and clarity to provide users with an immersive music experience. The headphones are beautifully designed, lightweight and portable for outdoor, travel or everyday use. It comes with comfortable earbuds and adjustable headband to ensure comfort during extended wear.', 'res/img/Headphones.jpg', 50, 1),
+(2, 'T-shirt', 'This T-shirt is a stylish and comfortable clothing choice. It is made from high-quality materials to ensure comfort and durability.The T-shirt has a clean and classic design that is suitable for a variety of occasions and styles. It has a comfortable fit and a form-fitting silhouette that showcases a stylish silhouette. This T-shirt is made of soft fabric to give you a comfortable wearing experience. It also has excellent color stability, and the colors remain vibrant and unfaded even after multiple washes.', 'res/img/T-shirt.jpg', 20, 2),
+(3, 'Book', 'This is an enthralling book that takes the reader into a world of fantasy and thrill. The storyline is gripping, full of suspense and unexpected twists and turns. Each page is filled with incredible adventure and delicate emotional descriptions that will keep the reader engaged. The author skillfully weaves a story full of puzzles and mysteries, and the intriguing plot takes the reader on a mysterious journey. This book is more than a form of entertainment, it is an opportunity to inspire thought and exploration.', 'res/img/Book.jpg', 10, 3);
 
 -- --------------------------------------------------------
 
@@ -200,7 +207,7 @@ ALTER TABLE `cart`
 -- 使用表AUTO_INCREMENT `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 使用表AUTO_INCREMENT `order`
@@ -212,7 +219,7 @@ ALTER TABLE `order`
 -- 使用表AUTO_INCREMENT `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- 使用表AUTO_INCREMENT `store`

@@ -17,6 +17,22 @@ class DataHandler {
         return $result;
     }
 
+    public function queryProduct($category) {
+        $result = array();
+        $res = $this->getProduct();
+        foreach ($res as $val) {
+            if ($category == 0) {
+                array_push($result, $val);
+            }
+            else {
+                if ($val->category_id == $category) {
+                    array_push($result, $val);
+                }
+            }
+        }
+        return $result;
+    }
+
     public static function getStore() {
         include_once "../../Online_Marketplace/config/dbaccess.php";
         $query = "SELECT * FROM store";
@@ -33,6 +49,20 @@ class DataHandler {
     }
 
     public static function getProductbyName() {
+        include_once "../../Online_Marketplace/config/dbaccess.php";
+        $query = "SELECT * FROM product";
+        $result = mysqli_query($conn, $query);
+        $products = [];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $product = new product($row['product_id'], $row['product_name'], $row['product_description'], 
+                                $row['product_image'], $row['product_price'], $row['category_id']);
+            array_push($products, $product);
+        }
+        mysqli_close($conn);
+        return $products;
+    }
+
+    public static function getProduct() {
         include_once "../../Online_Marketplace/config/dbaccess.php";
         $query = "SELECT * FROM product";
         $result = mysqli_query($conn, $query);

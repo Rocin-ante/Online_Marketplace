@@ -6,7 +6,7 @@ $("form").submit(function(event) {
 
     // 发起Ajax请求
     $.ajax({
-        method: "GET",
+        type: "GET",
         url: "../../../Online_Marketplace/backend/serviceHandler.php",
         cache: false,
         data: {method: "queryProductbyName", param: keyword},

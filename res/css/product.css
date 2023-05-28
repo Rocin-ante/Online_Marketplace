@@ -1,24 +1,22 @@
-body{
-    background: url(../img/toy5.png);
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-attachment: fixed;
-    background-size: cover;
-}
-h1{
-    color: ivory;
-    font-size: xx-large;
-    text-align: center;
-}
-h2{
-    color: gold;
-    font-size: xx-large;
-    text-align: center;
-}
-img{
-    display: block;
+.select-box {
     width: 100%;
-    height: auto;
-    text-align: center;
+    max-width: 300px;
+    padding: 8px;
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #555;
+  }  
+
+.product-image {
+    width: 100%;
+    height: 300px; /* 调整图片高度 */
+    object-fit: cover; /* 图片裁剪方式，保持宽高比并填充容器 */
 }
 
+.product-price {
+    font-weight: bold;
+    color: red;
+  }
+  

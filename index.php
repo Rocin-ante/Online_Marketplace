@@ -9,7 +9,7 @@
       <script src="https://cdn.jsdelivr.cn/npm/respond.js@1.4.2/dest/respond.min.js"></script>
     <![endif]-->
     <link rel="stylesheet" href="res/bootstrap/css/bootstrap.min.css">
-    <title>index</title>
+    <title>Online Marketplace</title>
 </head>
 <body>
     <?php

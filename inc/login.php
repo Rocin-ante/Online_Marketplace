@@ -10,22 +10,22 @@
 
         <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
 
-          <form style="width: 23rem;" action="ins/post_signin.php" method="post" onsubmit="return check()" >
+          <form style="width: 23rem;" action="../config/login.inc.php" method="post" onsubmit="return check()" >
 
             <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
 
             <div class="form-outline mb-4">
-              <input type="email" id="form2Example18" class="form-control form-control-lg" />
-              <label class="form-label" for="form2Example18">Email address</label>
+              <input type="email" name="uid" id="form2Example18" class="form-control form-control-lg" />
+              <label class="form-label"  for="form2Example18">Email address</label>
             </div>
 
             <div class="form-outline mb-4">
-              <input type="password" id="form2Example28" class="form-control form-control-lg" />
+              <input type="password" name="pwd" id="form2Example28" class="form-control form-control-lg" />
               <label class="form-label" for="form2Example28">Password</label>
             </div>
 
             <div class="pt-1 mb-4">
-                <button type="submit" class="btn btn-warning butten" formaction="ins/post_signin.php">Log in</button>
+                <button type="button input submit" class="btn btn-warning butten">Log in</button>
             </div>
             <p class="small mb-5 pb-lg-2"><a class="text-primary nav-link <?= ($site == "Anzeige") ? "active" : "" ?>" href="?site=Anzeige"> Warum Login?</a></p>
             <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Forgot password?</a></p>
@@ -63,5 +63,6 @@
                 return false;
             }
             return ture;
+      
         }
     </script>

@@ -1,9 +1,8 @@
 <?php
 // Überprüfen !!! , Ob notwendige infomationen fehlen 
-function emptyInputSignup($First_name,$Last_name,$email,$uid,
-        $Anrede,$pwd,$pwdRepeat){
+function emptyInputSignup($first_name,$last_name,$email,$pwd,$pwdRepeat){
             $result;
-            if (empty($First_name) || empty($Last_name) || empty($email) || empty($uid) || empty($Anrede) ||empty($pwd) ||empty($pwdRepeat) ) {
+            if (empty($first_name) || empty($last_name) || empty($email) || empty($pwd) ||empty($pwdRepeat) ) {
                 $result = true;
             }
             else{

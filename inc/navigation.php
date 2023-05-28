@@ -9,10 +9,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link fw-bold text-primary <?= ($site == "home") ? "active" : "" ?>" href="?site=home">Home</a>
+                <a class="nav-link fw-bold <?= ($site == "home") ? "active" : "" ?>" href="?site=home">Home</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link fw-bold <?= ($site == "product") ? "active" : "" ?>" href="?site=product">Product</a>
+                <a class="nav-link fw-bold <?= ($site == "product") ? "active" : "" ?>" href="?site=product">Product</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link fw-bold" href="#">Link</a>
@@ -32,7 +32,7 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled fw-bold">Disabled</a>
+                <a class="nav-link fw-bold <?= ($site == "Impressum") ? "active" : "" ?>" href="?site=Impressum">Impressum</a>
             </li>
         </ul>
         <form class="d-flex" role="search">

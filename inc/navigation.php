@@ -22,11 +22,11 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
+                    More
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item <?= ($site == "order_product") ? "active" : "" ?>" href="?site=order_product">Order Product</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item <?= ($site == "checkout") ? "active" : "" ?>" href="?site=checkout">Checkout</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>

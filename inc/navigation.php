@@ -35,8 +35,8 @@
                 <a class="nav-link fw-bold <?= ($site == "Impressum") ? "active" : "" ?>" href="?site=Impressum">Impressum</a>
             </li>
         </ul>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search Product" aria-label="Search">
+        <form id="search-form" class="d-flex" role="search">
+            <input id="search-input" class="form-control me-2" type="search" placeholder="Search Product" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
     </div>
@@ -44,4 +44,20 @@
 </nav>
 
 <script src="res/bootstrap/js/jquery-3.6.4.min.js"></script>
-<script src="res/js/search_script.js" type="text/javascript"></script>  
+<script>
+    $("#search-form").submit(function(event) {
+        event.preventDefault();
+
+        var keyword = $("#search-input").val();
+
+        // 构建目标页面URL
+        var targetUrl = "index.php?site=search&keyword=" + encodeURIComponent(keyword);
+
+        // 页面跳转
+        window.location.href = targetUrl;
+    });
+
+    $("#search-form button").click(function() {
+        $("#search-form").submit();
+    });
+</script>

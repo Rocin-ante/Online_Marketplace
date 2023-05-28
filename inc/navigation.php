@@ -43,4 +43,5 @@
   </div>
 </nav>
 
+<script src="res/bootstrap/js/jquery-3.6.4.min.js"></script>
 <script src="res/js/search_script.js" type="text/javascript"></script>  

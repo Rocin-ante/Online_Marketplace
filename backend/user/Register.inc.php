@@ -9,24 +9,24 @@ if (isset($_POST["submit"])) {
     $pwdRepeat = $_POST["pwdRepeat"];
     $shipping_address = $_POST["shipping_address"];
     $payment_method = $_POST["payment_method"];
-    require_once '../config/dbaccess.php';
+    require_once '../../config/dbaccess.php';
     require_once 'creat.konto.php';
     if (emptyInputSignup($first_name,$last_name,$email,
     $pwd,$pwdRepeat,$shipping_address,$payment_method) !== false) {
-         header("location:../inc/Register.php?error=emptyinput");
+         header("location:../inc/account.php?error=emptyinput");
          exit();
     }
     if(invalidEmail($email) !== false ) {
-        header("location:../inc/Register.php?error=invalidEmail");
+        header("location:../inc/account.php?error=invalidEmail");
         exit();
         
     }
     if(pwdMatch($pwd, $pwdRepeat) !== false ) {
-        header("location:../inc/Register.php?error=Passworddonotmatch");
+        header("location:../inc/account.php?error=Passworddonotmatch");
         exit();
     }
     if (uidExists($conn, $email) !== false) {
-        header("location:../inc/Register.php?error=stmtfailed");
+        header("location:../inc/account.php?error=stmtfailed");
         exit();
     }
     createUser($conn, $first_name, $last_name,$email,$pwd,$shipping_address,$payment_method);
@@ -34,6 +34,6 @@ if (isset($_POST["submit"])) {
 
 }   
 else {
-    header("location: ../inc/Register.php");
+    header("location: ../../index.php");
     exit();
 }

@@ -19,22 +19,43 @@
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
                       <input type="text" name="First_name" class="form-control form-control-lg" maxlength="20" required />
-                      <label class="form-label" for="first_name" name="first_name">First name</label>
+                      <label class="form-label" for="First_name" name="First_name">First name</label>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
                       <input type="text" name="Last_name" class="form-control form-control-lg" required   />
-                      <label class="form-label" for="last_name" name="last_name">Last name</label>
+                      <label class="form-label" for="Last_name" name="Last_name">Last name</label>
                     </div>
                   </div>
                 </div>
 
-                <div class="form-outline mb-4">
-                    <input type="text" id="email"name="email"  class="form-control form-control-lg" required/>
-                    <label class="form-label" for="email"name="email"   >E-Mail-Adresse</label>
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" id="email"name="email"  class="form-control form-control-lg" required/>
+                      <label class="form-label" for="email"name="email"   >E-Mail-Adresse</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" id="uid"name="uid"  class="form-control form-control-lg" required />
+                      <label class="form-label" name="uid" for="uid">Username</label>
+                    </div>
+                  </div>
                 </div>
 
+                <div class="form-check form-check-inline mb-0 me-4">
+                    <input class="form-check-input" type="radio"  name="Anrede" name="inlineRadioOptions" id="femaleGender"
+                      value="Female" required/>
+                    <label class="form-check-label"name="Anrede"   for="femaleGender">Female</label>
+                  </div>
+
+                  <div class="form-check form-check-inline mb-0 me-4">
+                    <input class="form-check-input" type="radio" name="Anrede" id="maleGender"
+                      value="Male" required/>
+                    <label class="form-check-label" name="Anrede"   for="maleGender">Male</label>
+                  </div>
                 <div class="form-outline mb-4">
                   <input type="password" id="pwd" name="pwd" class="form-control form-control-lg" required />
                   <label class="form-label" for="pwd" name="pwd">Password</label>
@@ -43,16 +64,6 @@
                 <div class="form-outline mb-4">
                   <input type="password" id="pwdRepeat" name="pwdRepeat" class="form-control form-control-lg" required />
                   <label class="form-label" for="pwdRepeat" name="pwdRepeat">Password repeat</label>
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input type="text" id="shipping_address" name="shipping_address" class="form-control form-control-lg" required />
-                  <label class="form-label" for="shipping_address" name="shipping_address">shipping address</label>
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input type="text" id="payment_method" name="payment_method" class="form-control form-control-lg" required />
-                  <label class="form-label" for="payment_method" name="payment_method">payment method</label>
                 </div>
 
                 <div class="d-flex justify-content-end pt-3">

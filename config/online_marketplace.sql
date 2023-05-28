@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1
--- 生成日期： 2023-05-28 13:29:09
+-- 生成日期： 2023-05-28 14:14:57
 -- 服务器版本： 10.4.28-MariaDB
 -- PHP 版本： 8.2.4
 
@@ -107,7 +107,13 @@ CREATE TABLE `product` (
 INSERT INTO `product` (`product_id`, `product_name`, `product_description`, `product_image`, `product_price`, `category_id`) VALUES
 (1, 'Headphones', 'These headphones are a high-quality audio device designed to provide excellent sound quality and a comfortable wearing experience. It uses advanced audio technology with superior audio resolution and clarity to provide users with an immersive music experience. The headphones are beautifully designed, lightweight and portable for outdoor, travel or everyday use. It comes with comfortable earbuds and adjustable headband to ensure comfort during extended wear.', 'res/img/Headphones.jpg', 50, 1),
 (2, 'T-shirt', 'This T-shirt is a stylish and comfortable clothing choice. It is made from high-quality materials to ensure comfort and durability.The T-shirt has a clean and classic design that is suitable for a variety of occasions and styles. It has a comfortable fit and a form-fitting silhouette that showcases a stylish silhouette. This T-shirt is made of soft fabric to give you a comfortable wearing experience. It also has excellent color stability, and the colors remain vibrant and unfaded even after multiple washes.', 'res/img/T-shirt.jpg', 20, 2),
-(3, 'Book', 'This is an enthralling book that takes the reader into a world of fantasy and thrill. The storyline is gripping, full of suspense and unexpected twists and turns. Each page is filled with incredible adventure and delicate emotional descriptions that will keep the reader engaged. The author skillfully weaves a story full of puzzles and mysteries, and the intriguing plot takes the reader on a mysterious journey. This book is more than a form of entertainment, it is an opportunity to inspire thought and exploration.', 'res/img/Book.jpg', 10, 3);
+(3, 'Book', 'This is an enthralling book that takes the reader into a world of fantasy and thrill. The storyline is gripping, full of suspense and unexpected twists and turns. Each page is filled with incredible adventure and delicate emotional descriptions that will keep the reader engaged. The author skillfully weaves a story full of puzzles and mysteries, and the intriguing plot takes the reader on a mysterious journey. This book is more than a form of entertainment, it is an opportunity to inspire thought and exploration.', 'res/img/Book.jpg', 10, 3),
+(4, 'Headphones', 'These headphones are a high-quality audio device designed to provide excellent sound quality and a comfortable wearing experience. It uses advanced audio technology with superior audio resolution and clarity to provide users with an immersive music experience. The headphones are beautifully designed, lightweight and portable for outdoor, travel or everyday use. It comes with comfortable earbuds and adjustable headband to ensure comfort during extended wear.', 'res/img/Headphones1.jpg', 50, 1),
+(5, 'Headphones', 'These headphones are a high-quality audio device designed to provide excellent sound quality and a comfortable wearing experience. It uses advanced audio technology with superior audio resolution and clarity to provide users with an immersive music experience. The headphones are beautifully designed, lightweight and portable for outdoor, travel or everyday use. It comes with comfortable earbuds and adjustable headband to ensure comfort during extended wear.', 'res/img/Headphones2.jpg', 50, 1),
+(6, 'T-shirt', 'This T-shirt is a stylish and comfortable clothing choice. It is made from high-quality materials to ensure comfort and durability.The T-shirt has a clean and classic design that is suitable for a variety of occasions and styles. It has a comfortable fit and a form-fitting silhouette that showcases a stylish silhouette. This T-shirt is made of soft fabric to give you a comfortable wearing experience. It also has excellent color stability, and the colors remain vibrant and unfaded even after multiple washes.', 'res/img/T-shirt1.jpg', 20, 2),
+(7, 'T-shirt', 'This T-shirt is a stylish and comfortable clothing choice. It is made from high-quality materials to ensure comfort and durability.The T-shirt has a clean and classic design that is suitable for a variety of occasions and styles. It has a comfortable fit and a form-fitting silhouette that showcases a stylish silhouette. This T-shirt is made of soft fabric to give you a comfortable wearing experience. It also has excellent color stability, and the colors remain vibrant and unfaded even after multiple washes.', 'res/img/T-shirt2.jpg', 20, 2),
+(8, 'Book', 'This is an enthralling book that takes the reader into a world of fantasy and thrill. The storyline is gripping, full of suspense and unexpected twists and turns. Each page is filled with incredible adventure and delicate emotional descriptions that will keep the reader engaged. The author skillfully weaves a story full of puzzles and mysteries, and the intriguing plot takes the reader on a mysterious journey. This book is more than a form of entertainment, it is an opportunity to inspire thought and exploration.', 'res/img/Book1.jpg', 10, 3),
+(9, 'Book', 'This is an enthralling book that takes the reader into a world of fantasy and thrill. The storyline is gripping, full of suspense and unexpected twists and turns. Each page is filled with incredible adventure and delicate emotional descriptions that will keep the reader engaged. The author skillfully weaves a story full of puzzles and mysteries, and the intriguing plot takes the reader on a mysterious journey. This book is more than a form of entertainment, it is an opportunity to inspire thought and exploration.', 'res/img/Book2.jpg', 10, 3);
 
 -- --------------------------------------------------------
 
@@ -219,7 +225,7 @@ ALTER TABLE `order`
 -- 使用表AUTO_INCREMENT `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- 使用表AUTO_INCREMENT `store`

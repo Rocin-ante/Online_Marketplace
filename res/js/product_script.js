@@ -21,7 +21,7 @@ $("#category-select").change(function() {
             for (var i = 0; i < response.length; i++) {
                 var product = response[i];
                 var productHtml = `
-                  <div class="card mb-3">
+                  <div class="card mb-3 product-card">
                     <div class="row g-0">
                       <div class="col-md-4">
                         <img src="${product.product_image}" alt="${product.product_name}" class="img-fluid product-image">

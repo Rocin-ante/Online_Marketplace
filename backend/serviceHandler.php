@@ -9,11 +9,10 @@ isset($_GET["param"]) ? $param = $_GET["param"] : false;
 
 $logic = new SimpleLogic();
 $result = $logic->handleRequest($method, $param);
-if ($result == null) {
-    response("GET", 400, null);
-} else {
-    response("GET", 200, $result);
+if ($result === null) {
+    $result = []; // 返回空数组作为结果
 }
+response("GET", 200, $result);
 
 function response($method, $httpStatus, $data)
 {
@@ -28,3 +27,4 @@ function response($method, $httpStatus, $data)
             echo ("Method not supported yet!");
     }
 }
+

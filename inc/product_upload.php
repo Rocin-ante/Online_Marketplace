@@ -67,6 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $file_size = $file['size'];
         $file_error = $file['error'];
 
+        // Initialize the flag for file upload success
+        $file_uploaded = false;
+
         // Check for file upload errors
         if ($file_error == 0) {
             // Set the file destination
@@ -80,12 +83,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 mysqli_stmt_bind_param($stmt, "sssss", $product_name, $product_description, $file_destination, $product_price, $product_category);
                 mysqli_stmt_execute($stmt);
 
-                echo "<script>alert('File uploaded successfully!');location.reload();</script>";
+                $file_uploaded = true;
             } else {
                 echo 'Error moving file to destination';
             }
         } else {
-            echo "<script>alert('Error uploading file!');history.reload();</script>";
+            echo "<script>alert('Error uploading file!');location.reload();</script>";
+        }
+
+        // Display the success message only if the file was uploaded successfully
+        if ($file_uploaded) {
+            echo "<script>alert('File uploaded successfully!');location.reload();</script>";
         }
     } else {
         $sql = "INSERT INTO `product` (`product_name`, `product_description`, `product_image`, `product_price`, `category_id`) VALUES (?, ?, '1', ?, ?)";

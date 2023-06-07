@@ -88,12 +88,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo 'Error moving file to destination';
             }
         } else {
-            echo "<script>alert('Error uploading file!');location.reload();</script>";
+            echo "<script>alert('Error uploading file!'); location.href='/?site=product_upload';</script>";
         }
 
         // Display the success message only if the file was uploaded successfully
         if ($file_uploaded) {
-            echo "<script>alert('File uploaded successfully!');location.reload();</script>";
+            echo "<script>alert('File uploaded successfully!'); location.href='/?site=product_upload';</script>";
         }
     } else {
         $sql = "INSERT INTO `product` (`product_name`, `product_description`, `product_image`, `product_price`, `category_id`) VALUES (?, ?, '1', ?, ?)";
@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mysqli_stmt_bind_param($stmt, "ssss", $product_name, $product_description, $product_price, $product_category);
         mysqli_stmt_execute($stmt);
 
-        echo "<script>alert('File uploaded successfully!');location.reload();</script>";
+        echo "<script>alert('File uploaded successfully!'); location.href='/?site=product_upload';</script>";
     }
 
     mysqli_close($conn);

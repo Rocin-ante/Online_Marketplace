@@ -28,13 +28,13 @@
         <div>
             <span>Product Category</span><span class="red">*</span><br>
             <label>
-                <input type="radio" name="category" value="Electronics"> Electronics
+                <input type="radio" name="category" value="1"> Electronics
             </label>
             <label>
-                <input type="radio" name="category" value="Clothing"> Clothing
+                <input type="radio" name="category" value="2"> Clothing
             </label>
             <label>
-                <input type="radio" name="category" value="Books"> Books
+                <input type="radio" name="category" value="3"> Books
             </label>
             <!-- Add more radio buttons for additional categories if needed -->
         </div>
@@ -77,15 +77,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Insert the product details into the database
                 $sql = "INSERT INTO `product` (`product_name`, `product_description`, `product_image`, `product_price`, `category_id`) VALUES (?, ?, ?, ?, ?)";
                 $stmt = mysqli_prepare($conn, $sql);
-                mysqli_stmt_bind_param($stmt, "sssss", $product_name, $product_description, $file_name, $product_price, $product_category);
+                mysqli_stmt_bind_param($stmt, "sssss", $product_name, $product_description, $file_destination, $product_price, $product_category);
                 mysqli_stmt_execute($stmt);
 
-                echo "<script>alert('File uploaded successfully!');location.href='../index.php';</script>";
+                echo "<script>alert('File uploaded successfully!');location.reload();</script>";
             } else {
                 echo 'Error moving file to destination';
             }
         } else {
-            echo "<script>alert('Error uploading file!');history.back();</script>";
+            echo "<script>alert('Error uploading file!');history.reload();</script>";
         }
     } else {
         $sql = "INSERT INTO `product` (`product_name`, `product_description`, `product_image`, `product_price`, `category_id`) VALUES (?, ?, '1', ?, ?)";
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mysqli_stmt_bind_param($stmt, "ssss", $product_name, $product_description, $product_price, $product_category);
         mysqli_stmt_execute($stmt);
 
-        echo "<script>alert('File uploaded successfully!');location.href='../index.php';</script>";
+        echo "<script>alert('File uploaded successfully!');location.reload();</script>";
     }
 
     mysqli_close($conn);

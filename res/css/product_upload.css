@@ -9,6 +9,12 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
 }
+.centered-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust the height as needed */
+}
 .bonner {
     margin-top: 20px;
     text-align: center;

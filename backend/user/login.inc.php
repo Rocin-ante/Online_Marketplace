@@ -9,13 +9,13 @@ if (isset($_POST["submit"])) {
     require_once 'creat.konto.php';
 
     if(emptyInputLogin($email, $pwd) !== false){
-        header("location: ../inc/login.php?error=emptyinput");
+        echo "<script>alert('Please enter your email and password'); location.href='../../index.php'; </script>";
         exit();
     }
     loginUser($conn, $email,$pwd);
 }
 else{
-    header("location: ../../index.php");
+    echo "<script>alert('Login failed! ! !'); location.href='../../index.php'; </script>";
     exit();
 }
 

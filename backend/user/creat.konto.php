@@ -50,7 +50,7 @@ function uidExists($conn, $email){
             $sql ="SELECT * FROM users WHERE email = ?;";
             $stmt = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($stmt, $sql)) {
-                header("location:../inc/account.php?error=stmtfailed");
+                echo "<script>alert('Invalid Email ! ! !'); location.href='../../index.php'; </script>";
                 exit();
             }
         
@@ -95,7 +95,7 @@ function createUser($conn, $email,$pwd,$first_name,$last_name,$shipping_address,
         $sql ="INSERT INTO users (email,passwort,first_name,last_name,shipping_address,payment_method) VALUES (?,?,?,?,?,?);";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("location:../inc/account.php?error=stmtfailed");
+            echo "<script>alert('Please fill in the information correctly ! ! !');location.href='../../index.php'; </script>";
             exit();
         }
     
@@ -104,7 +104,7 @@ function createUser($conn, $email,$pwd,$first_name,$last_name,$shipping_address,
     mysqli_stmt_bind_param($stmt, "ssssss", $email,$hashedPwd,$first_name,$last_name,$shipping_address,$payment_method);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location:../../index.php?erflog!!!");
+    echo "<script>alert('singup successful ! ! ! Welcome to the Online Shop ! ! !'); location.href='../../index.php'; </script>";
             exit();
    
 }
@@ -123,21 +123,21 @@ function loginUser($conn, $email,$pwd){
     $emailExists = uidExists($conn, $email,$pwd);
 
     if($emailExists == false){
-        header("location: ../../inc/login.php?error=EmailExists");
+        echo "<script>alert('Sorry,this email adresse does not exist! ! !'); history.back();</script>";
         exit();
     }
     $pwdHashed = $emailExists["passwort"];
     $checkPwd = password_verify($pwd, $pwdHashed);
 
     if($checkPwd === false){
-        header("location: ../../inc/login.php?error=FlaschPwd");
+        echo "<script>alert('Please enter the correct password! ! !'); history.back(); </script>";
         exit();
     }
     else if ($checkPwd === true ) {
         session_start();
         $_SESSION["userid"] = $emailExists["user_id"];
         $_SESSION["email"] = $emailExists["email"];
-        header("location:../../index.php?erflog!!!");
+        echo "<script>alert('Login successful ! ! ! Welcome to the Online Shop ! ! !'); location.href='../../index.php'; </script>";
         exit();
     }
 }

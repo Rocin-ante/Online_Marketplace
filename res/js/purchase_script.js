@@ -72,7 +72,6 @@ function buyProduct(productId) {
     // 从session获取用户ID
     var userId = 1;
   
-    // 从session获取商品单价
     var unitPrice = 1;
   
     // 获取当前时间

@@ -126,7 +126,7 @@ function loginUser($conn, $email,$pwd){
         header("location: ../../inc/login.php?error=EmailExists");
         exit();
     }
-    $pwdHashed = $emailExists["users_pwd"];
+    $pwdHashed = $emailExists["passwort"];
     $checkPwd = password_verify($pwd, $pwdHashed);
 
     if($checkPwd === false){

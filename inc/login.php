@@ -21,7 +21,7 @@
                         </div>
 
                         <div class="pt-1 mb-4">
-                            <button type="submit" class="btn btn-warning">Log in</button>
+                            <button type="submit" name="submit" class="btn btn-warning">Log in</button>
                         </div>
                         <p class="small mb-3"><a class="text-primary" href="?site=Anzeige">Warum Login?</a></p>
                         <p class="small mb-3"><a class="text-muted" href="#!">Forgot password?</a></p>

@@ -5,7 +5,7 @@ if (isset($_POST["submit"])) {
     $email = $_POST["email"];
     $pwd = $_POST["pwd"];
 
-    require_once '../config/dbaccess.php';
+    require_once '../../config/dbaccess.php';
     require_once 'creat.konto.php';
 
     if(emptyInputLogin($email, $pwd) !== false){

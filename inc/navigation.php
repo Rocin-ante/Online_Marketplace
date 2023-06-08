@@ -63,6 +63,9 @@
             <li class="nav-item">
                 <a class="nav-link fw-bold <?= ($site == "Impressum") ? "active" : "" ?>" href="?site=Impressum">Impressum</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link fw-bold <?= ($site == "Anzeige") ? "active" : "" ?>" href="?site=Anzeige">Help</a>
+            </li>
         </ul>
         <form id="search-form" class="d-flex" role="search">
             <input id="search-input" class="form-control me-2" type="search" placeholder="Search Product" aria-label="Search">

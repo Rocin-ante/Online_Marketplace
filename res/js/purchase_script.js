@@ -70,10 +70,10 @@ function buyProduct(productId) {
     var paymentMethod = parseInt($("#paymentMethodSelect").val());
   
     // 从session获取用户ID
-    var userId = " ";
+    var userId = 1;
   
     // 从session获取商品单价
-    var unitPrice = " ";
+    var unitPrice = 1;
   
     // 获取当前时间
     var currentTime = new Date().toISOString();

@@ -37,6 +37,19 @@ function removeFromCart(index) {
     updateCart();
 }
 
+function addCart(index) {
+    if (cartItems[index]) {
+        cartItems[index].quantity++;
+
+
+        if (cartItems[index].quantity === 0) {
+            cartItems.splice(index, 1);
+        }
+    }
+
+    updateCart();
+}
+
 function updateCart() {
     var cartItemsElement = document.getElementById("cart-items");
     var cartTotalElement = document.getElementById("cart-total");
@@ -52,8 +65,9 @@ function updateCart() {
         listItem.innerHTML = `
       <span class="cart-item-name">${item.name}</span>
       <span class="cart-item-price">$${item.price.toFixed(2)}</span>
-      <span class="cart-item-quantity">Quantity: ${item.quantity}</span>
-      <button onclick="removeFromCart(${i})" class="remove-button">Remove</button>
+      <button onclick="removeFromCart(${i})" class="remove-button">-</button>
+      <span class="cart-item-quantity">${item.quantity}</span>
+      <button onclick="addCart(${i})" class="remove-button">+</button>
     `;
 
         cartItemsElement.appendChild(listItem);
@@ -64,10 +78,47 @@ function updateCart() {
     cartTotalElement.textContent = "Total: $" + total.toFixed(2);
 }
 
-
-
 function checkout() {
-    console.log('Checkout clicked');
+    console.log('Checkout button clicked');
+
+    var container = document.getElementById("container");
+    container.style.display = 'none';
+
+    var checkoutForm = document.getElementById("cf");
+    checkoutForm.style.display = 'block';
+}
+
+function reviewOrder() {
+    // Get the form values
+    var name = document.getElementById("name").value;
+    var lastname = document.getElementById("lastname").value;
+    var address = document.getElementById("address").value;
+    var addaddress = document.getElementById("addaddress").value;
+    var phone = document.getElementById("phone").value;
+
+    // Display the review information
+    document.getElementById("review-name").textContent = name;
+    document.getElementById("review-lastname").textContent = lastname;
+    document.getElementById("review-address").textContent = address;
+    document.getElementById("review-addaddress").textContent = addaddress;
+    document.getElementById("review-phone").textContent = phone;
+
+    // Hide the checkout form and display the review section
+    document.getElementById("cf").style.display = "none";
+    document.getElementById("review").style.display = "block";
+}
+
+// Function to edit the address
+function editAddress() {
+    // Hide the review section and display the checkout form
+    document.getElementById("review").style.display = "none";
+    document.getElementById("cf").style.display = "block";
+}
+
+// Function to confirm the order
+function confirmOrder() {
+    // You can add your code to submit the order or perform further actions here
+    alert("Order confirmed! Thank you for your purchase.");
 }
 
 var addToCartButtons = document.getElementsByClassName('add-to-cart-btn');
@@ -81,10 +132,6 @@ function addToCartHandler(event) {
     var price = parseFloat(event.target.parentNode.children[1].textContent.slice(1));
 
     addToCart(productName, price);
-}
-
-function checkout() {
-    document.getElementById('checkout-form').style.display = 'block';
 }
 
 function confirmOrder() {

@@ -15,9 +15,6 @@
                 <a class="nav-link fw-bold <?= ($site == "product") ? "active" : "" ?>" href="?site=product">Product</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link fw-bold" href="#">Link</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link fw-bold <?= ($site == "login") ? "active" : "" ?>" href="?site=login">Login</a>
             </li>
             <li class="nav-item">

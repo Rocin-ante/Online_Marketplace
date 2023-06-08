@@ -15,10 +15,38 @@
                 <a class="nav-link fw-bold <?= ($site == "product") ? "active" : "" ?>" href="?site=product">Product</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link fw-bold <?= ($site == "login") ? "active" : "" ?>" href="?site=login">Login</a>
+                <?php
+                    if (isset($_SESSION['username']) && $_SESSION['username'] <> '') {
+                    //通过判断用户是否登录来显示不同的选项 
+                    //Anzeige verschiedener Optionen, je nachdem, ob der Benutzer angemeldet ist oder nicht
+                ?>
+                    <a class="nav-link fw-bold <?= ($site == "usermodify") ? "active" : "" ?>" href="?site=usermodify">|<?php echo $_SESSION['username'];?>|</a>
+                <?php
+                    }
+                ?>
+                <?php
+                    if (!isset($_SESSION['username'])) {
+                ?>
+                    <a class="nav-link fw-bold <?= ($site == "account") ? "active" : "" ?>" href="?site=account">Register</a>
+                <?php
+                    }
+                ?>
             </li>
-            <li class="nav-item">
-                <a class="nav-link fw-bold <?= ($site == "account") ? "active" : "" ?>" href="?site=account">Register</a>
+            <li>
+                <?php
+                    if (isset($_SESSION['username']) && $_SESSION['username'] <> '') {
+                ?>
+                    <a class="nav-link fw-bold" href="ins/logout.php">Logout</a>
+                <?php
+                    }
+                ?>
+                <?php
+                    if (!isset($_SESSION['username'])) {
+                ?>
+                    <a class="nav-link fw-bold <?= ($site == "login") ? "active" : "" ?>" href="?site=login">Login</a>
+                <?php
+                    }
+                ?>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

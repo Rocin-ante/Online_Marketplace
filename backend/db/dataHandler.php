@@ -38,6 +38,35 @@ class DataHandler {
         return $result;
     }
 
+    public function orderProduct($orderData) {
+        include_once "../../Online_Marketplace/config/dbaccess.php";
+    
+        $userId = $orderData['user_id'];
+        $productId = $orderData['productId'];
+        $quantity = $orderData['quantity'];
+        $unitPrice = $orderData['unitPrice'];
+        $date = $orderData['date'];
+        $address = $orderData['address'];
+        $paymentMethod = $orderData['paymentMethod'];
+    
+        // 使用预处理语句
+        $query = "INSERT INTO `order` (`user_id`, `product_id`, `quantity`, `unit_price`, `order_date`, `shipping_address`, `payment_method`)
+                  VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("iiissss", $userId, $productId, $quantity, $unitPrice, $date, $address, $paymentMethod);
+        $result = $stmt->execute();
+    
+        if ($result) {
+            $response = array('status' => 'success', 'message' => 'Order creation successful');
+        } else {
+            $response = array('status' => 'error', 'message' => 'Order creation failed');
+        }
+    
+        $stmt->close();
+        mysqli_close($conn);
+        return json_encode($response);
+    }     
+
     public static function getStore() {
         include_once "../../Online_Marketplace/config/dbaccess.php";
         $query = "SELECT * FROM store";

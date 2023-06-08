@@ -18,3 +18,4 @@
 
 <script src="res/bootstrap/js/jquery-3.6.4.min.js"></script>
 <script src="res/js/product_script.js" type="text/javascript"></script>  
+<script src="res/js/purchase_script.js" type="text/javascript"></script>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1
--- 生成日期： 2023-05-28 14:14:57
+-- 生成日期： 2023-06-08 16:04:55
 -- 服务器版本： 10.4.28-MariaDB
 -- PHP 版本： 8.2.4
 
@@ -20,20 +20,6 @@ SET time_zone = "+00:00";
 --
 -- 数据库： `online_marketplace`
 --
-
--- --------------------------------------------------------
-
---
--- 表的结构 `cart`
---
-
-CREATE TABLE `cart` (
-  `cart_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `subtotal_amount` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -66,23 +52,13 @@ INSERT INTO `category` (`category_id`, `category_name`, `parent_category_id`) VA
 CREATE TABLE `order` (
   `order_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `unit_price` int(11) NOT NULL,
   `order_date` int(11) NOT NULL,
   `shipping_address` varchar(250) NOT NULL,
   `payment_method` int(11) NOT NULL,
-  `order_status` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
--- --------------------------------------------------------
-
---
--- 表的结构 `order_product`
---
-
-CREATE TABLE `order_product` (
-  `order_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `unit_price` int(11) NOT NULL
+  `order_status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -145,22 +121,25 @@ INSERT INTO `store` (`store_id`, `store_name`, `store_logo`, `store_description`
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `passwort` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `shipping_address` varchar(200) NOT NULL,
-  `payment_method` varchar(50) NOT NULL
+  `payment_method` int(11) NOT NULL,
+  `admin` int(11) NOT NULL DEFAULT 0,
+  `state` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- 转存表中的数据 `users`
+--
+
+INSERT INTO `users` (`user_id`, `email`, `password`, `first_name`, `last_name`, `shipping_address`, `payment_method`, `admin`, `state`) VALUES
+(1, 'admin@admin.com', '21232F297A57A5A743894A0E4A801FC3', 'admin', 'admin', 'admin', 0, 1, 1);
 
 --
 -- 转储表的索引
 --
-
---
--- 表的索引 `cart`
---
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`cart_id`);
 
 --
 -- 表的索引 `category`
@@ -173,13 +152,6 @@ ALTER TABLE `category`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`order_id`);
-
---
--- 表的索引 `order_product`
---
-ALTER TABLE `order_product`
-  ADD KEY `order_id` (`order_id`),
-  ADD KEY `product_id` (`product_id`);
 
 --
 -- 表的索引 `product`
@@ -202,12 +174,6 @@ ALTER TABLE `users`
 --
 -- 在导出的表使用AUTO_INCREMENT
 --
-
---
--- 使用表AUTO_INCREMENT `cart`
---
-ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- 使用表AUTO_INCREMENT `category`
@@ -237,18 +203,7 @@ ALTER TABLE `store`
 -- 使用表AUTO_INCREMENT `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- 限制导出的表
---
-
---
--- 限制表 `order_product`
---
-ALTER TABLE `order_product`
-  ADD CONSTRAINT `order_product_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`),
-  ADD CONSTRAINT `order_product_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`);
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

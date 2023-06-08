@@ -36,7 +36,7 @@
                 <?php
                     if (isset($_SESSION['username']) && $_SESSION['username'] <> '') {
                 ?>
-                    <a class="nav-link fw-bold" href="ins/logout.php">Logout</a>
+                    <a class="nav-link fw-bold" href="inc/logout.php">Logout</a>
                 <?php
                     }
                 ?>

@@ -135,8 +135,8 @@ function loginUser($conn, $email,$pwd){
     }
     else if ($checkPwd === true ) {
         session_start();
-        $_SESSION["userid"] = $emailExists["user_id"];
-        $_SESSION["email"] = $emailExists["email"];
+        //$_SESSION["username"] = $emailExists["username"];
+        $_SESSION["username"] = $emailExists["email"];
         echo "<script>alert('Login successful ! ! ! Welcome to the Online Shop ! ! !'); location.href='../../index.php'; </script>";
         exit();
     }

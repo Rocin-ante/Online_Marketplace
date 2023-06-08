@@ -1,3 +1,12 @@
+<style>
+    body {
+        background-image: url('res/img/LemonCocktail.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        color: aliceblue;
+    }
+</style>
 
 <body>
     <div class="container text-center">
@@ -77,13 +86,10 @@
             <p>
                 <strong>Project members (Students)</strong>
                 <br><br>
-                Zayats Ilya <a href="mailto:if21b089@technikum-wien.at">if21b089@technikum-wien.at</a>
-                <br><br>
                 Lin Liu <a href="mailto:if22b258@technikum-wien.at">if22b258@technikum-wien.at</a>
                 <br><br>
                 Yangzheng Xie <a href="mailto:if21b402@technikum-wien.at">if21b402@technikum-wien.at</a>
                 <br><br>
-                Chenhao Peng <a href="mailto:if22b261@technikum-wien.at">if22b261@technikum-wien.at</a>
             </p>
         </div>
     </div>

@@ -1,62 +1,74 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
 <link rel="stylesheet" href="../ONLINE_MARKETPLACE/res/css/order_product.css">
 
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Order Management</title>
+    <title>My Orders</title>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div class="orders">
-      <h2>My Orders</h2>
-      <table>
-        <thead>
+    <div class="jumbotron">
+      <h1 class="display-4">My Orders</h1>
+      <p class="lead">This is your order list.</p>
+      <hr class="my-4">
+      
+      <table class="table  table-hover">
+        <thead class="thead-dark">
           <tr>
-            <th>Order Number</th>
-            <th>Order Status</th>
-            <th>Order Details</th>
+            <!-- <th scope="col">#</th> -->
+            <th scope="col">order</th>
+            <th scope="col">order_date</th>
+            <th scope="col">address</th>
+            <th scope="col">pay_method</th>
+            <th scope="col">operate</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>#12345</td>
-            <td class="status shipped">Shipped</td>
-            <td><a class="dropdown-item <?= ($site == "order_details") ? "active" : "" ?>" href="?site=order_details">『View Details』</a></td>
-          </tr>
-          <tr>
-            <td>#67890</td>
-            <td class="status pending">Pending</td>
-            <td><a class="dropdown-item <?= ($site == "order_details") ? "active" : "" ?>" href="?site=order_details">『View Details』</a></td>
-          </tr>
-          <tr>
-            <td>#24680</td>
-            <td class="status cancelled">Cancelled</td>
-            <td><a class="dropdown-item <?= ($site == "order_details") ? "active" : "" ?>" href="?site=order_details">『View Details』</a></td>
-          </tr>
-        </tbody>
+           <?php
+              // 连接到数据库  mit Datenbank verbinden
+              include_once 'config/dbaccess.php';
+              $sql = "SELECT * FROM `order` where `user_id` = 1 ORDER BY `order_id` DESC";
+              $result = mysqli_query($conn, $sql);
+
+              while ($row = mysqli_fetch_array($result)) 
+              {
+                  $total_price = $row["quantity"] * $row["unit_price"];
+            ?>
+            <tr>
+                <!-- <th scope="row">1</th> -->
+                <td><?php echo $row['order_id'];?></td>
+                <td><?php echo $row['order_date'];?></td>
+                <td><?php echo $row['shipping_address'];?></td>
+                <td><?php
+                        switch ($row['payment_method'])
+                        {
+                        case 1:
+                            echo 'Paypal';
+                            break;
+                        case 2:
+                            echo 'Apple Pay';
+                            break;
+                        case 3:
+                            echo 'UnionPay';
+                            break;
+                        default:
+                            echo '';
+                        }
+                    ;?>
+                </td>
+                <td>
+                  <a href="?site=order_details&id=<?echo $row['order_id'];?>" class="btn btn-success">show</a>
+                </td>
+            </tr>
+                <?php           
+            }   
+          ?>   
         </tbody>
       </table>
     </div>
+    
    </body> 
-    <?php
-      // 连接到数据库  mit Datenbank verbinden
-      include_once 'config/dbaccess.php';
-      $sql = "SELECT * FROM `order_product` ORDER BY `order_id` DESC";
-      $result = mysqli_query($conn, $sql);
-
-      while ($row = mysqli_fetch_array($result)) 
-      {
-          $total_price = $row["quantity"] * $row["unit_price"];
-    ?>
-    <tr>
-      <td><?php echo $row['order_id'];?></td>
-      <td><?php echo $row['username'];?></td>
-      <td><?php echo $row['product_id'];?></td>
-      <td><?php echo $row['quantity'];?></td>
-      <td><?php echo $row['unit_price'];?></td>
-      <td><?php echo $total_price;?></td>
-      <td><?php echo date("Y-m-d H:i", $row['createtime']);?></td>
-    </tr> 
-    <?php           
-      }   
-    ?>   
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-7ymO4nGrkm372HoSbq1OY2DP4pEZnMiA+E0F3zPr+JQQtQ82gQ1HPY3QIVtztVua" crossorigin="anonymous"></script>

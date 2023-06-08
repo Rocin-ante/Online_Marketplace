@@ -15,10 +15,38 @@
                 <a class="nav-link fw-bold <?= ($site == "product") ? "active" : "" ?>" href="?site=product">Product</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link fw-bold <?= ($site == "login") ? "active" : "" ?>" href="?site=login">Login</a>
+                <?php
+                    if (isset($_SESSION['username']) && $_SESSION['username'] <> '') {
+                    //通过判断用户是否登录来显示不同的选项 
+                    //Anzeige verschiedener Optionen, je nachdem, ob der Benutzer angemeldet ist oder nicht
+                ?>
+                    <a class="nav-link fw-bold <?= ($site == "usermodify") ? "active" : "" ?>" href="?site=usermodify">|<?php echo $_SESSION['username'];?>|</a>
+                <?php
+                    }
+                ?>
+                <?php
+                    if (!isset($_SESSION['username'])) {
+                ?>
+                    <a class="nav-link fw-bold <?= ($site == "account") ? "active" : "" ?>" href="?site=account">Register</a>
+                <?php
+                    }
+                ?>
             </li>
-            <li class="nav-item">
-                <a class="nav-link fw-bold <?= ($site == "account") ? "active" : "" ?>" href="?site=account">Register</a>
+            <li>
+                <?php
+                    if (isset($_SESSION['username']) && $_SESSION['username'] <> '') {
+                ?>
+                    <a class="nav-link fw-bold" href="ins/logout.php">Logout</a>
+                <?php
+                    }
+                ?>
+                <?php
+                    if (!isset($_SESSION['username'])) {
+                ?>
+                    <a class="nav-link fw-bold <?= ($site == "login") ? "active" : "" ?>" href="?site=login">Login</a>
+                <?php
+                    }
+                ?>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -26,7 +54,6 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item <?= ($site == "order_product") ? "active" : "" ?>" href="?site=order_product">Order Product</a></li>
-                    <li><a class="dropdown-item <?= ($site == "checkout") ? "active" : "" ?>" href="?site=checkout">Checkout</a></li>
                     <li><a class="dropdown-item <?= ($site == "product_upload") ? "active" : "" ?>" href="?site=product_upload">Product Upload</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -34,6 +61,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link fw-bold <?= ($site == "Impressum") ? "active" : "" ?>" href="?site=Impressum">Impressum</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link fw-bold <?= ($site == "Anzeige") ? "active" : "" ?>" href="?site=Anzeige">Help</a>
             </li>
         </ul>
         <form id="search-form" class="d-flex" role="search">

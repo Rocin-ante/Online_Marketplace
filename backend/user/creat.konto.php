@@ -1,7 +1,7 @@
 <?php
 // Überprüfen !!! , Ob notwendige infomationen fehlen 
 function emptyInputSignup($first_name,$last_name,$email,$pwd,$pwdRepeat,$shipping_address,$payment_method){
-            $result;
+            $result = ' ';
             if (empty($first_name) || empty($last_name) || empty($email) ||empty($pwd) ||empty($pwdRepeat) ||empty($shipping_address) ||empty($payment_method) ) {
                 $result = true;
             }
@@ -25,7 +25,7 @@ function emptyInputSignup($first_name,$last_name,$email,$pwd,$pwdRepeat,$shippin
         }*/
 // Überprüfen !!! , Ob email in ordnung ist.
 function invalidEmail($email){
-            $result;
+            $result = ' ';
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $result = true;
             }
@@ -36,7 +36,7 @@ function invalidEmail($email){
         }
 // Überprüfen !!! , ob die beiden Eingaben sind inkonsistent.
 function pwdMatch($pwd,$pwdRepeat){
-            $result;
+            $result = ' ';
             if ($pwd !== $pwdRepeat) {
                 $result = true;
             }
@@ -109,7 +109,7 @@ function createUser($conn, $email,$pwd,$first_name,$last_name,$shipping_address,
    
 }
 function emptyInputLogin($email,$pwd){
-            $result;
+            $result = ' ';
             if (empty($email)||empty($pwd)) {
                 $result = true;
             }

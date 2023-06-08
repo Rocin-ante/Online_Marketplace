@@ -1,62 +1,71 @@
 <link rel="stylesheet" href="../ONLINE_MARKETPLACE/res/css/order_product.css">
 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Order Management</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <div class="orders">
-      <h2>My Orders</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Order Number</th>
-            <th>Order Status</th>
-            <th>Order Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>#12345</td>
-            <td class="status shipped">Shipped</td>
-            <td><a class="dropdown-item <?= ($site == "order_details") ? "active" : "" ?>" href="?site=order_details">『View Details』</a></td>
-          </tr>
-          <tr>
-            <td>#67890</td>
-            <td class="status pending">Pending</td>
-            <td><a class="dropdown-item <?= ($site == "order_details") ? "active" : "" ?>" href="?site=order_details">『View Details』</a></td>
-          </tr>
-          <tr>
-            <td>#24680</td>
-            <td class="status cancelled">Cancelled</td>
-            <td><a class="dropdown-item <?= ($site == "order_details") ? "active" : "" ?>" href="?site=order_details">『View Details』</a></td>
-          </tr>
-        </tbody>
-        </tbody>
-      </table>
-    </div>
-   </body> 
-    <?php
-      // 连接到数据库  mit Datenbank verbinden
-      include_once 'config/dbaccess.php';
-      $sql = "SELECT * FROM `order_product` ORDER BY `order_id` DESC";
-      $result = mysqli_query($conn, $sql);
+<style>
+  .jumbotron {
+    background-color: #f8f9fa; /* Set the desired background color */
+    margin-top: 20px; /* Add margin to the top */
+    margin-bottom: 20px; /* Add margin to the bottom */
+  }
+</style>
 
-      while ($row = mysqli_fetch_array($result)) 
-      {
-          $total_price = $row["quantity"] * $row["unit_price"];
-    ?>
-    <tr>
-      <td><?php echo $row['order_id'];?></td>
-      <td><?php echo $row['username'];?></td>
-      <td><?php echo $row['product_id'];?></td>
-      <td><?php echo $row['quantity'];?></td>
-      <td><?php echo $row['unit_price'];?></td>
-      <td><?php echo $total_price;?></td>
-      <td><?php echo date("Y-m-d H:i", $row['createtime']);?></td>
-    </tr> 
-    <?php           
-      }   
-    ?>   
+<div class="jumbotron bg-light rounded">
+  <h1 class="display-4">My Orders</h1>
+  <p class="lead">This is your order list.</p>
+  <hr class="my-4">
+  
+  <table class="table table-hover table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <!-- <th scope="col">#</th> -->
+        <th scope="col">order</th>
+        <th scope="col">order_date</th>
+        <th scope="col">address</th>
+        <th scope="col">pay_method</th>
+        <th scope="col">operate</th>
+      </tr>
+    </thead>
+    <tbody>
+       <?php
+          // Connect to the database
+          include_once 'config/dbaccess.php';
+          $sql = "SELECT * FROM `order` where `user_id` = 1 ORDER BY `order_id` DESC";
+          $result = mysqli_query($conn, $sql);
+
+          while ($row = mysqli_fetch_array($result)) 
+          {
+              $total_price = $row["quantity"] * $row["unit_price"];
+        ?>
+        <tr>
+            <!-- <th scope="row">1</th> -->
+            <td><?php echo $row['order_id'];?></td>
+            <td><?php echo $row['order_date'];?></td>
+            <td><?php echo $row['shipping_address'];?></td>
+            <td><?php
+                    switch ($row['payment_method'])
+                    {
+                    case 1:
+                        echo 'Paypal';
+                        break;
+                    case 2:
+                        echo 'Apple Pay';
+                        break;
+                    case 3:
+                        echo 'UnionPay';
+                        break;
+                    default:
+                        echo '';
+                    }
+                ;?>
+            </td>
+            <td>
+              <a href="?site=order_details&id=<?php echo $row['order_id'];?>" class="btn btn-success">show</a>
+            </td>
+        </tr>
+            <?php           
+        }   
+      ?>   
+    </tbody>
+  </table>
+</div>
+
+<script src="res/bootstrap/js/jquery-3.6.4.min.js"></script>

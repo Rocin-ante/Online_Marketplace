@@ -70,7 +70,7 @@ function buyProduct(productId) {
     var paymentMethod = parseInt($("#paymentMethodSelect").val());
   
     // 从session获取用户ID
-    var userId = $_SESSION['user_id'];
+    var userId = 1;
   
     var unitPrice = 1;
   

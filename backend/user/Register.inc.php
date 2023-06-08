@@ -12,20 +12,20 @@ if (isset($_POST["submit"])) {
     require_once 'creat.konto.php';
     if (emptyInputSignup($first_name,$last_name,$email,
     $pwd,$pwdRepeat,$shipping_address,$payment_method) !== false) {
-         header("location:../../index.php?error=emptyinput");
+        echo "<script>alert('Please enter all important information'); location.href='../../index.php'; </script>";
          exit();
     }
     if(invalidEmail($email) !== false ) {
-        header("location:../../index.php?error=invalidEmail");
+        echo "<script>alert('Please enter the correct email address'); location.href='../../index.php'; </script>";
         exit();
         
     }
     if(pwdMatch($pwd, $pwdRepeat) !== false ) {
-        header("location:../../index.php?error=Passworddonotmatch");
+        echo "<script>alert('The passwords entered twice do not match'); location.href='../../index.php'; </script>";
         exit();
     }
     if (uidExists($conn, $email) !== false) {
-        header("location:../../index.php?error=stmtfailed");
+        echo "<script>alert('This email adress has already been registered '); location.href='../../index.php'; </script>";
         exit();
     }
     createUser($conn, $email, $pwd,$first_name,$last_name,$shipping_address,$payment_method);
@@ -33,6 +33,6 @@ if (isset($_POST["submit"])) {
 
 }   
 else {
-    header("location: ../../index.php");
+    echo "<script>alert('error'); location.href='../../index.php'; </script>";
     exit();
 }

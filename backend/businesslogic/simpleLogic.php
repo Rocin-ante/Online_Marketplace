@@ -18,6 +18,9 @@ class SimpleLogic {
             case "queryProduct":
                 $res = $this->dh->queryProduct($param);
                 break;
+            case "orderProduct":
+                $res = $this->dh->orderProduct($param);
+                break;
             default:
                 $res = null;
                 break;

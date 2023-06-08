@@ -40,17 +40,17 @@
 <script>
     // Check if the username and password are valid
     function check() {
-        let Username = document.getElementsByName('Username')[0].value.trim();
-        let Password = document.getElementsByName('Password')[0].value.trim();
+        let Username = document.getElementsByName('email')[0].value.trim();
+        let Password = document.getElementsByName('pwd')[0].value.trim();
 
         // Validate input data
-        let UsernameReg = /^[a-zA-Z0-9]{3,10}$/;
+        let UsernameReg = /^[a-zA-Z0-9_\-]+@([a-z A-Z 0-9]+\.)+(com|cn|net|org)$/;
         if (!UsernameReg.test(Username)) {
             alert('Illegal characters in username or password!');
             return false;
         }
 
-        let PasswordReg = /^[a-zA-Z0-9_*]{6,10}$/;
+        let PasswordReg = /^[a-zA-Z0-9_*]{3,10}$/;
         if (!PasswordReg.test(Password)) {
             alert('Illegal characters in username or password!');
             return false;

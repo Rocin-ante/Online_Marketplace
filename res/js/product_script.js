@@ -33,7 +33,7 @@ $("#category-select").change(function() {
                             <p class="card-text">
                                 Price: <span class="product-price">$${product.product_price}</span>
                             </p>
-                            <button class="btn btn-primary btn-buy" data-product-id="${product.product_id}">Add to Shopping Cart</button>
+                            <button class="btn btn-primary btn-buy" data-product-id="${product.product_id}">Buy Now</button>
                         </div>
                       </div>
                     </div>

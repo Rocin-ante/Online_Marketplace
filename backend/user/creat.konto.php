@@ -155,8 +155,8 @@ function loginUser($conn, $email,$pwd){
         $cookie_userID = $info["user_id"];
         $cookie_admin = $info['admin'];
         setcookie('username', $cookie_username, time()+(120), "/");
-        setcookie('username', $cookie_userID, time()+(120), "/");
-        setcookie('username', $cookie_admin, time()+(120), "/");
+        setcookie('userID', $cookie_userID, time()+(120), "/");
+        setcookie('admin', $cookie_admin, time()+(120), "/");
 
         echo "<script>alert('Login successful ! ! ! Welcome to the Online Shop ! ! !'); location.href='../../index.php'; </script>";
         exit();

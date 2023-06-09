@@ -21,7 +21,7 @@
         <th scope="col">order_date</th>
         <th scope="col">address</th>
         <th scope="col">pay_method</th>
-        <th scope="col">operate</th>
+        <th scope="col">order details</th>
       </tr>
     </thead>
     <tbody>

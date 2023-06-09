@@ -135,8 +135,29 @@ function loginUser($conn, $email,$pwd){
     }
     else if ($checkPwd === true ) {
         session_start();
-        //$_SESSION["username"] = $emailExists["username"];
-        $_SESSION["username"] = $emailExists["email"];
+
+        $sql = "SELECT * FROM `users` WHERE binary `email` = '".$emailExists["email"]."'";
+        $result = mysqli_query($conn, $sql);
+        $info = mysqli_fetch_array($result);
+        if ($info['admin'])
+        {
+            $_SESSION['isAdmin'] = 1;
+        }
+        else
+        {
+            $_SESSION['isAdmin'] = 0;
+        }
+        
+        $_SESSION["username"] = $info["email"];
+        $_SESSION["userID"] = $info["user_id"];
+
+        $cookie_username = $info["email"];
+        $cookie_userID = $info["user_id"];
+        $cookie_admin = $info['admin'];
+        setcookie('username', $cookie_username, time()+(120), "/");
+        setcookie('username', $cookie_userID, time()+(120), "/");
+        setcookie('username', $cookie_admin, time()+(120), "/");
+
         echo "<script>alert('Login successful ! ! ! Welcome to the Online Shop ! ! !'); location.href='../../index.php'; </script>";
         exit();
     }

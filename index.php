@@ -14,6 +14,11 @@ session_start();
     <![endif]-->
     <link rel="stylesheet" href="res/bootstrap/css/bootstrap.min.css">
     <title>Online Marketplace</title>
+    <style>
+        body    {
+	        font-family: "microsoft yahei";
+        }
+    </style>
 </head>
 <body>
     <?php

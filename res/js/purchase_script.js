@@ -75,14 +75,14 @@ function buyProduct(productId) {
     var unitPrice = 1;
   
     // 获取当前时间
-    var currentTime = Date.parse(new Date());
+    //var currentTime = Date.now();
   
     var orderData = {
         user_id: userId,
         productId: productId,
         quantity: quantity,
         unitPrice: unitPrice,
-        date: currentTime,
+        //date: currentTime,
         address: address,
         paymentMethod: paymentMethod
     };

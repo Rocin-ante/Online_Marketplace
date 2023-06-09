@@ -18,6 +18,7 @@
       <tr>
         <!-- <th scope="col">#</th> -->
         <th scope="col">order</th>
+        <th scope="col">user</th>
         <th scope="col">order date</th>
         <th scope="col">address</th>
         <th scope="col">pay method</th>
@@ -28,15 +29,23 @@
        <?php
           // Connect to the database
           include_once 'config/dbaccess.php';
-          $sql = "SELECT * FROM `order` where `user_id` = '".$_SESSION["userID"]."' ORDER BY `order_id` DESC";
+          if ($_SESSION['isAdmin'] == 1)
+          {
+              $sql = "SELECT * from `order` ORDER BY `order_id` desc";
+          }
+          else
+          {
+              $sql = "SELECT * FROM `order` where `user_id` = '".$_SESSION["userID"]."' ORDER BY `order_id` DESC";
+          }
           $result = mysqli_query($conn, $sql);
-
           while ($row = mysqli_fetch_array($result)) 
           {
               $total_price = $row["quantity"] * $row["unit_price"];
         ?>
+        
         <tr>
             <!-- <th scope="row">1</th> -->
+            <td><?php echo $row['user_id'];?></td>
             <td><?php echo $row['order_id'];?></td>
             <td><?php echo date('Y-m-d H:i:s', $row['order_date']);?></td>
             <td><?php echo $row['shipping_address'];?></td>

@@ -74,6 +74,17 @@
                             }
                         ?>
                     </li>
+                    <li>
+                        <?php
+                            if (isset($_SESSION['username']) && $_SESSION['username'] <> '' && $_SESSION['isAdmin'] == 1) {
+                            //判断用户是否已经登陆而且是管理员
+                            //Feststellen, ob der Benutzer angemeldet ist und ein Administrator ist
+                        ?>
+                            <a class="dropdown-item <?= ($site == "usermanagement") ? "active" : "" ?>" href="?site=usermanagement">User Management</a>
+                        <?php
+                            }
+                        ?>
+                    </li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>

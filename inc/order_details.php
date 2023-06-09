@@ -47,7 +47,7 @@
             </tbody>
         </table>
 
-        <p class="text-lowercase">order date: <?php echo $arr[0]['order_date']; ?></p>
+        <p class="text-lowercase">order date: <?php echo date('Y-m-d H:i:s', $row['order_date']);?></p>
         <p class="text-lowercase">address: <?php echo $arr[0]['shipping_address']; ?></p>
         <p class="text-lowercase">pay: <?php
             switch ($arr[0]['payment_method']) {

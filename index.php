@@ -17,7 +17,7 @@ session_start();
     <style>
         body    {
 	        font-family: "microsoft yahei";
-            margin-top: 100px; /* 与导航栏高度相等的 margin-top */
+            margin-top: 60px; /* 与导航栏高度相等的 margin-top */
             margin-bottom: 100px; /* 与页脚高度相等的 margin-bottom */
         }
     </style>

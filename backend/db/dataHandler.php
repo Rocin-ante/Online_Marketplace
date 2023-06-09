@@ -40,7 +40,7 @@ class DataHandler {
 
     public function orderProduct($orderData) {
         include_once "../../Online_Marketplace/config/dbaccess.php";
-    
+        
         $userId = $orderData['user_id'];
         $productId = $orderData['productId'];
         $quantity = $orderData['quantity'];
@@ -49,23 +49,22 @@ class DataHandler {
         $address = $orderData['address'];
         $paymentMethod = $orderData['paymentMethod'];
     
-        // 使用预处理语句
+        // 构建插入语句
         $query = "INSERT INTO `order` (`user_id`, `product_id`, `quantity`, `unit_price`, `order_date`, `shipping_address`, `payment_method`)
-                  VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("iiissss", $userId, $productId, $quantity, $unitPrice, $date, $address, $paymentMethod);
-        $result = $stmt->execute();
+                  VALUES ('$userId', '$productId', '$quantity', '$unitPrice', '$date', '$address', '$paymentMethod')";
+        
+        $result = mysqli_query($conn, $query); // 执行插入操作
+        
+        mysqli_close($conn);
     
         if ($result) {
-            $response = array('status' => 'success', 'message' => 'Order creation successful');
+            $response = "Order creation successful.";
         } else {
-            $response = array('status' => 'error', 'message' => 'Order creation failed');
+            $response = "Order creation failed.";
         }
-    
-        $stmt->close();
-        mysqli_close($conn);
-        return json_encode($response);
-    }     
+        
+        return $response;
+    }                      
 
     public static function getStore() {
         include_once "../../Online_Marketplace/config/dbaccess.php";

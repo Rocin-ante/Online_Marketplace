@@ -120,13 +120,13 @@ function emptyInputLogin($email,$pwd){
         }
     
 function loginUser($conn, $email,$pwd){
-    $emailExists = uidExists($conn, $email,$pwd);
+    $emailExists = uidExists($conn, $email, $pwd);
 
     if($emailExists == false){
         echo "<script>alert('Sorry,this email adresse does not exist! ! !'); history.back();</script>";
         exit();
     }
-    $pwdHashed = $emailExists["passwort"];
+    $pwdHashed = $emailExists["pwd"];
     $checkPwd = password_verify($pwd, $pwdHashed);
 
     if($checkPwd === false){

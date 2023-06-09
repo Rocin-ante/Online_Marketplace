@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="../ONLINE_MARKETPLACE/res/css/product.css">
 
+<div id="user-data" style="display: none;" data-user-username="<?php echo $_SESSION['username']; ?>" data-user-id="<?php echo $_SESSION['userID']; ?>"></div>
+
 <div class="container">
   <div class="row">
     <div class="col-lg-4">

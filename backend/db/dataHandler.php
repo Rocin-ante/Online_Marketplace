@@ -45,13 +45,12 @@ class DataHandler {
         $productId = $orderData['productId'];
         $quantity = $orderData['quantity'];
         $unitPrice = $orderData['unitPrice'];
-        $date = $orderData['date'];
         $address = $orderData['address'];
         $paymentMethod = $orderData['paymentMethod'];
     
         // 构建插入语句
         $query = "INSERT INTO `order` (`user_id`, `product_id`, `quantity`, `unit_price`, `order_date`, `shipping_address`, `payment_method`)
-                  VALUES ('$userId', '$productId', '$quantity', '$unitPrice', '$date', '$address', '$paymentMethod')";
+                  VALUES ('$userId', '$productId', '$quantity', '$unitPrice', '".time()."', '$address', '$paymentMethod')";
         
         $result = mysqli_query($conn, $query); // 执行插入操作
         

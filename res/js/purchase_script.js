@@ -64,7 +64,7 @@ function buyProduct(productId) {
     var quantity = parseInt($("#quantityInput").val());
   
     // 获取用户输入的地址
-    var address = $("#addressInput").val();
+    var address = $("#addressInput").val().trim();
   
     // 获取选中的支付方式
     var paymentMethod = parseInt($("#paymentMethodSelect").val());
@@ -75,7 +75,7 @@ function buyProduct(productId) {
     var unitPrice = 1;
   
     // 获取当前时间
-    var currentTime = new Date().toISOString();
+    var currentTime = Date.parse(new Date());
   
     var orderData = {
         user_id: userId,
@@ -86,8 +86,9 @@ function buyProduct(productId) {
         address: address,
         paymentMethod: paymentMethod
     };
-  
+    var jsonData = JSON.stringify(orderData);
     console.log(orderData);
+    console.log(jsonData);
 
     // 发起购买请求
     $.ajax({

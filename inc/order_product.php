@@ -45,8 +45,8 @@
         
         <tr>
             <!-- <th scope="row">1</th> -->
-            <td><?php echo $row['user_id'];?></td>
             <td><?php echo $row['order_id'];?></td>
+            <td><?php echo $row['user_id'];?></td>
             <td><?php echo date('Y-m-d H:i:s', $row['order_date']);?></td>
             <td><?php echo $row['shipping_address'];?></td>
             <td><?php

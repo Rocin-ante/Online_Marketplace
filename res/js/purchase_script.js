@@ -1,18 +1,35 @@
+
 $(document).ready(function() {
     // 给购买按钮添加点击事件
     $(document).on("click", ".btn-buy", function() {
-        // 获取商品ID
-        var productId = $(this).data("product-id");
+      // 获取商品ID
+      var productId = $(this).data("product-id");
   
-        // 获取当前会话中的用户名
-        var username = sessionStorage.getItem("username");
+      // 获取商品单价
+      var unitPrice = $(this).data("product-price");
+  
+      // 获取用户email和id
+      var username = $("#user-data").data("user-username");
+      var userId = $("#user-data").data("user-id");
+  
+      // 判断用户名是否为空
+      if (typeof userId === "undefined") {
+        alert("You need to log in to make a purchase.");
+        // 关闭购买模态框
+        $("#purchaseModal").modal("hide");
+      } else {
+        console.log(username);
+        console.log(userId);
+        console.log(productId);
+        console.log(unitPrice);
   
         // 显示购买模态框
-        showModal(productId, username);
+        showModal(productId, unitPrice, username, userId);
+      }
     });
-});
+}); 
   
-function showModal(productId, username) {
+function showModal(productId, unitPrice, username, userId) {
     // 创建购买模态框的 HTML 结构
     var modalHtml = `
         <div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
@@ -42,7 +59,7 @@ function showModal(productId, username) {
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary" onclick="buyProduct(${productId})" id="purchaseBtn">Confirm</button>
+                        <button type="button" class="btn btn-primary" onclick="buyProduct(${productId}, ${unitPrice}, ${userId})" id="purchaseBtn">Confirm</button>
                     </div>
                 </div>
             </div>
@@ -59,7 +76,7 @@ function showModal(productId, username) {
     $("#purchaseModal").modal("show");
 }
   
-function buyProduct(productId) {
+function buyProduct(productId, unitPrice, userId) {
     // 获取购买数量
     var quantity = parseInt($("#quantityInput").val());
   
@@ -69,26 +86,15 @@ function buyProduct(productId) {
     // 获取选中的支付方式
     var paymentMethod = parseInt($("#paymentMethodSelect").val());
   
-    // 从session获取用户ID
-    var userId = 1;
-  
-    var unitPrice = 1;
-  
-    // 获取当前时间
-    //var currentTime = Date.now();
-  
     var orderData = {
         user_id: userId,
         productId: productId,
         quantity: quantity,
         unitPrice: unitPrice,
-        //date: currentTime,
         address: address,
         paymentMethod: paymentMethod
     };
-    var jsonData = JSON.stringify(orderData);
     console.log(orderData);
-    console.log(jsonData);
 
     // 发起购买请求
     $.ajax({

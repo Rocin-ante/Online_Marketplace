@@ -28,7 +28,7 @@
        <?php
           // Connect to the database
           include_once 'config/dbaccess.php';
-          $sql = "SELECT * FROM `order` where `user_id` = 1 ORDER BY `order_id` DESC";
+          $sql = "SELECT * FROM `order` where `user_id` = '".$_SESSION["userID"]."' ORDER BY `order_id` DESC";
           $result = mysqli_query($conn, $sql);
 
           while ($row = mysqli_fetch_array($result)) 

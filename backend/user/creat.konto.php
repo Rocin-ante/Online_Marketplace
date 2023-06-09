@@ -126,11 +126,11 @@ function loginUser($conn, $email,$pwd){
         echo "<script>alert('Sorry,this email adresse does not exist! ! !'); history.back();</script>";
         exit();
     }
-    $pwdHashed = $emailExists["pwd"];
+    $pwdHashed = $emailExists["password"];
     $checkPwd = password_verify($pwd, $pwdHashed);
 
     if($checkPwd === false){
-        echo "<script>alert('Please enter the correct password! ! !'); history.back(); </script>";
+        echo "<script>alert('Please enter the correct password! ! !'); history.back();</script>";
         exit();
     }
     else if ($checkPwd === true ) {

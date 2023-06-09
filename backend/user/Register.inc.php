@@ -7,11 +7,11 @@ if (isset($_POST["submit"])) {
     $first_name = $_POST["first_name"];
     $last_name = $_POST["last_name"];
     $shipping_address = $_POST["shipping_address"];
-    $payment_method = $_POST["payment_method"];
+    //$payment_method = $_POST["payment_method"];
     require_once '../../config/dbaccess.php';
     require_once 'creat.konto.php';
     if (emptyInputSignup($first_name,$last_name,$email,
-    $pwd,$pwdRepeat,$shipping_address,$payment_method) !== false) {
+    $pwd,$pwdRepeat,$shipping_address) !== false) {
         echo "<script>alert('Please enter all important information'); location.href='../../index.php'; </script>";
          exit();
     }
@@ -28,7 +28,7 @@ if (isset($_POST["submit"])) {
         echo "<script>alert('This email adress has already been registered '); location.href='../../index.php'; </script>";
         exit();
     }
-    createUser($conn, $email, $pwd,$first_name,$last_name,$shipping_address,$payment_method);
+    createUser($conn, $email, $pwd,$first_name,$last_name,$shipping_address);
 
 
 }   

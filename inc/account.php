@@ -51,7 +51,7 @@
                 <!--<div class="form-outline mb-4">
                   <input type="text" id="payment_method" name="payment_method" class="form-control form-control-lg" required />
                   <label class="form-label" for="payment_method" name="payment_method">payment method</label>
-                </div>-->
+                </div>
                 <div class="form-check form-check-inline mb-0 me-4">
                     <input class="form-check-input" type="radio"  name="payment_method" name="inlineRadioOptions" id="payment_method"
                       value="1" required/>
@@ -68,7 +68,7 @@
                     <input class="form-check-input" type="radio"  name="payment_method" name="inlineRadioOptions" id="payment_method"
                       value="1" required/>
                     <label class="form-check-label"name="payment_method"   for="payment_method">Union Pay</label>
-                </div>
+                </div>-->
                 <div class="d-flex justify-content-end pt-3">
                   <button type="submit" name="submit" class="btn btn-warning btn-lg ms-2">Submit form</button>
                 </div>

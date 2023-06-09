@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
   <div class="container-fluid">
     <a class="nav-link <?= ($site == "home") ? "active" : "" ?>" aria-current="page" href=".">
         <img src="../Online_Marketplace/res/img/logo.png" alt="">

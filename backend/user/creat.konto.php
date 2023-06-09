@@ -47,27 +47,26 @@ function pwdMatch($pwd,$pwdRepeat){
         }
 //Überprüfen !!! , ob Konto und email korrekt sind.
 function uidExists($conn, $email){
-            $sql ="SELECT * FROM users WHERE email = ?;";
-            $stmt = mysqli_stmt_init($conn);
-            if (!mysqli_stmt_prepare($stmt, $sql)) {
-                echo "<script>alert('Invalid Email ! ! !'); location.href='../../index.php'; </script>";
-                exit();
-            }
-        
-
-        mysqli_stmt_bind_param($stmt, "s", $email);
-        mysqli_stmt_execute($stmt);
-
-        $resultData = mysqli_stmt_get_result($stmt);
-        if ($row = mysqli_fetch_assoc($resultData)) {
-            return $row;
-        }
-        else{
-            $result = false;
-            return $result;
-        }
-        mysqli_stmt_close($stmt);
+    $sql ="SELECT * FROM users WHERE email = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "<script>alert('Invalid Email!'); location.href='../../index.php';</script>";
+        exit();
     }
+
+    mysqli_stmt_bind_param($stmt, "s", $email);
+    mysqli_stmt_execute($stmt);
+
+    $resultData = mysqli_stmt_get_result($stmt);
+    if ($row = mysqli_fetch_assoc($resultData)) {
+        return $row;
+    }
+    else{
+        $result = false;
+        return $result;
+    }
+    mysqli_stmt_close($stmt);
+}
 //Überprüfen des Administratorkennworts und der Kontonnummer
 /*    function AdminExists($conn,$uid,$pwd){
         $sql ="SELECT * FROM admin WHERE admin_usersname = ? OR admin_pwd = ?;";
@@ -91,23 +90,24 @@ function uidExists($conn, $email){
     }
     mysqli_stmt_close($stmt);
 }  */ 
-function createUser($conn, $email,$pwd,$first_name,$last_name,$shipping_address,$payment_method){
-        $sql ="INSERT INTO users (email,passwort,first_name,last_name,shipping_address,payment_method) VALUES (?,?,?,?,?,?);";
-        $stmt = mysqli_stmt_init($conn);
-        if (!mysqli_stmt_prepare($stmt, $sql)) {
-            echo "<script>alert('Please fill in the information correctly ! ! !');location.href='../../index.php'; </script>";
-            exit();
-        }
-    
-        $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+function createUser($conn, $email, $pwd, $first_name, $last_name, $shipping_address, $payment_method){
+    $sql = "INSERT INTO `users` (`email`, `password`, `first_name`, `last_name`, `shipping_address`, `payment_method`) VALUES (?, ?, ?, ?, ?, ?);";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        echo "<script>alert('Please fill in the information correctly!');location.href='../../index.php';</script>";
+        exit();
+    }
 
-    mysqli_stmt_bind_param($stmt, "ssssss", $email,$hashedPwd,$first_name,$last_name,$shipping_address,$payment_method);
+    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+
+    mysqli_stmt_bind_param($stmt, "ssssss", $email, $hashedPwd, $first_name, $last_name, $shipping_address, $payment_method);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    echo "<script>alert('singup successful ! ! ! Welcome to the Online Shop ! ! !'); location.href='../../index.php'; </script>";
-            exit();
-   
+
+    echo "<script>alert('Signup successful! Welcome to the Online Shop!'); location.href='../../index.php';</script>";
+    exit();
 }
+
 function emptyInputLogin($email,$pwd){
             $result = ' ';
             if (empty($email)||empty($pwd)) {

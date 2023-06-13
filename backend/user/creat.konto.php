@@ -1,8 +1,8 @@
 <?php
 // Überprüfen !!! , Ob notwendige infomationen fehlen 
-function emptyInputSignup($first_name,$last_name,$email,$pwd,$pwdRepeat,$shipping_address,$payment_method){
+function emptyInputSignup($first_name,$last_name,$email,$pwd,$pwdRepeat,$shipping_address){
             $result = ' ';
-            if (empty($first_name) || empty($last_name) || empty($email) ||empty($pwd) ||empty($pwdRepeat) ||empty($shipping_address) ||empty($payment_method) ) {
+            if (empty($first_name) || empty($last_name) || empty($email) ||empty($pwd) ||empty($pwdRepeat) ||empty($shipping_address)) {
                 $result = true;
             }
             else{

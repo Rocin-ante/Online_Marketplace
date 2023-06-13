@@ -29,7 +29,7 @@
         $site = $_GET["site"] ?? "home";
 
         // for security reasone:  check if $site is in a list of available sites
-        $sites = [ "home", "link", "impressum", "login", "order_product", "product", "Anzeige", "account", "Impressum", "order_details","order_add", "product_upload","search","usermanagement"];
+        $sites = [ "home", "link", "impressum", "login", "order_product", "product", "Anzeige", "account", "Impressum", "order_details","order_add", "product_upload","search","usermanagement","usermodify"];
         if (!in_array($site, $sites)) {
             $error = "Seite nicht gefunden - " . $site;
             $site = "error";     

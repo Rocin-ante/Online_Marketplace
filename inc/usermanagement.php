@@ -8,7 +8,7 @@
 <h5>[modify] Modify user personal information</h5>
 <h5>[state] Modify user activity</h5>
 <h5>[set admin][cancal admin] set administrator</h5>
-    <table border="1" cellspacing="0" cellpadding="10" style="border-collapse:collapse" align="center" width="95%">
+    <table border="1" cellspacing="0" cellpadding="10" style="border-collapse:collapse" align ="center" width="95%">
         <tr>
             <td>ID</td>
             <td>E-mail address</td>
@@ -40,11 +40,11 @@
             <td><?php echo $info['admin']?'Yes':'No';?></td>
             <td><?php echo $info['state']?'Active':'Not';?></td>
             <td>
-                <a href="./?site=usermodify&username=<?php echo $info['username'];?>">[modify]</a>  
+                <a href="./?site=usermodify&email=<?php echo $info['email'];?>">[modify]</a>  
                 <!--传递当前条目用户名到信息修改页面-->
                 <!--Übergabe des Benutzernamens des aktuellen Eintrags an die Seite zur Änderung der Informationen-->
-            <?php if($info['username'] <> 'admin') {?> <a 
-                href="javascript:state(<?php echo $info['id'];?>, '<?php echo $info['email']; ?>', <?php echo $info['state'];?>);">[state]</a>
+            <?php if($info['email'] <> 'admin') {?> <a 
+                href="javascript:state(<?php echo $info['user_id'];?>, '<?php echo $info['email']; ?>', <?php echo $info['state'];?>);">[state]</a>
                 <!-- 判断用户是否是超级管理员，如果是则不能修改此属性。传递当前条目的id，用户名和活跃到脚本，用来查询和更改用户活跃属性 -->
                 <!-- Bestimmt, ob der Benutzer ein Superadmin ist; wenn ja, kann dieses Attribut nicht geändert werden. Übergibt die ID, den Benutzernamen und das Active des aktuellen Eintrags an das Skript, das zur Abfrage und Änderung des Active-Attributs des Benutzers verwendet wird -->
                 <?php 
@@ -59,10 +59,10 @@
                 //Feststellen, ob der Benutzer ein Administrator ist
                 if($info['admin'])
                 {
-                    if ($info['username'] <> 'admin')
+                    if ($info['email'] <> 'admin')
                     {
                 ?>
-                <a href="ins/setadmin.php?action=0&id=<?php echo $info['id'];?>">[cancel admin]</a>  
+                <a href="inc/setadmin.php?action=0&id=<?php echo $info['user_id'];?>">[cancel admin]</a>  
                 <!--传递当前条目用户id和action值到修改管理员脚本-->
                 <!--Übergeben Sie die Benutzerkennung des aktuellen Eintrags und den Aktionswert an das Skript "Administrator ändern-->
                 <?php
@@ -74,10 +74,10 @@
                         echo '<span style="color: gray">[cancel admin]</span>';
                     }
                 }else{
-                if ($info['username'] <> 'admin')
+                if ($info['email'] <> 'admin')
                     {
                 ?>
-                <a href="ins/setadmin.php?action=1&id=<?php echo $info['id'];?>">[set admin]</a>
+                <a href="inc/setadmin.php?action=1&id=<?php echo $info['user_id'];?>">[set admin]</a>
                 <?php
                     }
                     else
@@ -104,7 +104,7 @@
     {
         if (confirm('Are you sure you want to modify the active status of user ' + username + ' ?'))
         {
-            location.href='ins/statususer.php?id=' + id + '&username=' + username + '&state=' +state;
+            location.href='inc/statususer.php?id=' + id + '&username=' + username + '&state=' +state;
         }
     }
 </script>

@@ -91,46 +91,55 @@ function emptyInputLogin($email,$pwd){
 function loginUser($conn, $email,$pwd){
     $emailExists = uidExists($conn, $email, $pwd);
 
-    if($emailExists == false){
-        echo "<script>alert('Sorry,this email adresse does not exist! ! !'); history.back();</script>";
+    $sql = "SELECT * FROM `users` WHERE binary `email` = '".$emailExists["email"]."'";
+    $result = mysqli_query($conn, $sql);
+    $info = mysqli_fetch_array($result);
+    if ($info['state'] == 0) {
+        echo "<script>alert('Account has been banned ! ! !'); history.back();</script>";
         exit();
     }
-    $pwdHashed = $emailExists["password"];
-    $checkPwd = password_verify($pwd, $pwdHashed);
-
-    if($checkPwd === false){
-        echo "<script>alert('Please enter the correct password! ! !'); history.back();</script>";
-        exit();
-    }
-    else if ($checkPwd === true ) {
-        session_start();
-
-        $sql = "SELECT * FROM `users` WHERE binary `email` = '".$emailExists["email"]."'";
-        $result = mysqli_query($conn, $sql);
-        $info = mysqli_fetch_array($result);
-        if ($info['admin'])
-        {
-            $_SESSION['isAdmin'] = 1;
+    else {
+        if($emailExists == false){
+            echo "<script>alert('Sorry,this email adresse does not exist! ! !'); history.back();</script>";
+            exit();
         }
-        else
-        {
-            $_SESSION['isAdmin'] = 0;
+        $pwdHashed = $emailExists["password"];
+        $checkPwd = password_verify($pwd, $pwdHashed);
+    
+        if($checkPwd === false){
+            echo "<script>alert('Please enter the correct password! ! !'); history.back();</script>";
+            exit();
         }
-        
-        $_SESSION["username"] = $info["email"];
-        $_SESSION["userID"] = $info["user_id"];
-        $_SESSION["firstname"] = $info["first_name"];
-
-        $cookie_username = $info["email"];
-        $cookie_userID = $info["user_id"];
-        $cookie_admin = $info["admin"];
-        $cookie_firstname = $info["first_name"];
-        setcookie('username', $cookie_username, time()+(120), "/");
-        setcookie('userID', $cookie_userID, time()+(120), "/");
-        setcookie('admin', $cookie_admin, time()+(120), "/");
-        setcookie('firstname', $cookie_firstname, time()+(120), "/");
-
-        echo "<script>alert('Login successful ! ! ! Welcome to the Online Shop ! ! !'); location.href='../../index.php'; </script>";
-        exit();
-    }
+        else if ($checkPwd === true ) {
+            session_start();
+    
+            $sql = "SELECT * FROM `users` WHERE binary `email` = '".$emailExists["email"]."'";
+            $result = mysqli_query($conn, $sql);
+            $info = mysqli_fetch_array($result);
+            if ($info['admin'])
+            {
+                $_SESSION['isAdmin'] = 1;
+            }
+            else
+            {
+                $_SESSION['isAdmin'] = 0;
+            }
+            
+            $_SESSION["username"] = $info["email"];
+            $_SESSION["userID"] = $info["user_id"];
+            $_SESSION["firstname"] = $info["first_name"];
+    
+            $cookie_username = $info["email"];
+            $cookie_userID = $info["user_id"];
+            $cookie_admin = $info["admin"];
+            $cookie_firstname = $info["first_name"];
+            setcookie('username', $cookie_username, time()+(120), "/");
+            setcookie('userID', $cookie_userID, time()+(120), "/");
+            setcookie('admin', $cookie_admin, time()+(120), "/");
+            setcookie('firstname', $cookie_firstname, time()+(120), "/");
+    
+            echo "<script>alert('Login successful ! ! ! Welcome to the Online Shop ! ! !'); location.href='../../index.php'; </script>";
+            exit();
+        }
+    }   
 }

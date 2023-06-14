@@ -44,7 +44,7 @@
         let Password = document.getElementsByName('pwd')[0].value.trim();
 
         // Validate input data
-        let UsernameReg = /^[a-zA-Z0-9_\-]+@([a-z A-Z 0-9]+\.)+(com|cn|net|org)$/;
+        let UsernameReg = /^[a-zA-Z0-9_\-]+@([a-z A-Z 0-9]+\.)+(com|cn|net|org|at)$/;
         if (!UsernameReg.test(Username)) {
             alert('Illegal characters in username or password!');
             return false;

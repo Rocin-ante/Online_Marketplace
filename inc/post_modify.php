@@ -12,7 +12,6 @@ $Konto = $_SESSION['username'];
 if ($_SESSION['isAdmin'] != 1)
 {
     $OPassword = trim($_POST['OPassword']);
-    $NPassword = trim($_POST['Npassword']);
 }
 $NPassword = trim($_POST['NPassword']);
 //连接服务器

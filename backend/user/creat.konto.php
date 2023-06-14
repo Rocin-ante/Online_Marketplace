@@ -11,18 +11,6 @@ function emptyInputSignup($first_name,$last_name,$email,$pwd,$pwdRepeat,$shippin
             return $result;
         }
 
-        
-// Überprüfen !!! , Ob der Benutzername in ordnung ist.
-/*function invalidUid($uid){
-            $result;
-            if (!preg_match("/^[a-zA-Z0-9]*$/",$uid) ) {
-                $result = true;
-            }
-            else{
-                $result = false;
-            }
-            return $result;
-        }*/
 // Überprüfen !!! , Ob email in ordnung ist.
 function invalidEmail($email){
             $result = ' ';
@@ -34,6 +22,7 @@ function invalidEmail($email){
             }
             return $result;
         }
+
 // Überprüfen !!! , ob die beiden Eingaben sind inkonsistent.
 function pwdMatch($pwd,$pwdRepeat){
             $result = ' ';
@@ -45,6 +34,7 @@ function pwdMatch($pwd,$pwdRepeat){
             }
             return $result;
         }
+
 //Überprüfen !!! , ob Konto und email korrekt sind.
 function uidExists($conn, $email){
     $sql ="SELECT * FROM users WHERE email = ?;";
@@ -67,29 +57,8 @@ function uidExists($conn, $email){
     }
     mysqli_stmt_close($stmt);
 }
+
 //Überprüfen des Administratorkennworts und der Kontonnummer
-/*    function AdminExists($conn,$uid,$pwd){
-        $sql ="SELECT * FROM admin WHERE admin_usersname = ? OR admin_pwd = ?;";
-        $stmt = mysqli_stmt_init($conn);
-        if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("location:../inc/admin.login.php?error=stmtfailed");
-            exit();
-        }
-    
-
-    mysqli_stmt_bind_param($stmt, "ss", $uid, $pwd);
-    mysqli_stmt_execute($stmt);
-
-    $resultData = mysqli_stmt_get_result($stmt);
-    if ($row = mysqli_fetch_assoc($resultData)) {
-        return $row;
-    }
-    else{
-        $result = false;
-        return $result;
-    }
-    mysqli_stmt_close($stmt);
-}  */ 
 function createUser($conn, $email, $pwd, $first_name, $last_name, $shipping_address){
     $sql = "INSERT INTO `users` (`email`, `password`, `first_name`, `last_name`, `shipping_address`) VALUES (?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
@@ -165,21 +134,3 @@ function loginUser($conn, $email,$pwd){
         exit();
     }
 }
-/*function loginAdmin($conn, $uid,$pwd){
-    $uidExists = AdminExists($conn, $uid,$uid);
-
-    $pwdin = $uidExists["admin_pwd"];
-
-    if( $pwdin != $pwd){
-        header("location: ../inc/login.php?error=FlaschPwd");
-        exit();
-    }
-    else {
-        session_start();
-        $_SESSION["userid"] = $uidExists["ID"];
-        $_SESSION["useruid"] = $uidExists["admin_usersname"];
-        header("location:../inc/Admin.index.php");
-        exit();
-    }
-}
-*/

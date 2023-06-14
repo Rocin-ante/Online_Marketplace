@@ -17,7 +17,7 @@
     <thead class="thead-dark">
       <tr>
         <!-- <th scope="col">#</th> -->
-        <th scope="col">order</th>
+        <th scope="col">order number</th>
         <th scope="col">user</th>
         <th scope="col">order date</th>
         <th scope="col">address</th>

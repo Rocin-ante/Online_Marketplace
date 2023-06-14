@@ -28,6 +28,7 @@ else
 }
 ?>
 
+<div class="row justify-content-center">
 <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 bonner">
     <h1>Personal information</h1>
     <form action="inc/post_modify.php" method="post" onsubmit="return check()">
@@ -76,53 +77,54 @@ else
         </div>
     </form>
 </div>
+</div>
 
 <script>
     //检查表单输入数据的正确性，验证输入是否符合要求，所有数据确认无误后才会从前端传递到后端
     //Prüfung der Korrektheit der Formulareingabedaten, Überprüfung, ob die Eingabe den Anforderungen entspricht und ob alle Daten als korrekt bestätigt wurden, bevor sie vom Frontend an das Backend weitergeleitet werden
-        function check() {
-            let first_name = document.getElementsByName('first_name')[0].value.trim();
-            let last_name = document.getElementsByName('last_name')[0].value.trim();
-            let Email = document.getElementsByName('email')[0].value.trim();
-            let OPassword = document.getElementsByName('OPassword')[0].value.trim();
-            let NPassword = document.getElementsByName('NPassword')[0].value.trim();
-            let CPassword = document.getElementsByName('CPassword')[0].value.trim();
-            //验证输入数据，同时去除用户错误输入的空格
-            // Validierung der Eingabedaten und Entfernen von Leerzeichen, die vom Benutzer falsch eingegeben wurden
-            let FirstNameReg = /^[a-zA-Z0-9]{3,10}$/;
-            if (!FirstNameReg.test(FirstName)) {
-                alert('First Name is required and can only use upper and lower case letters and is 3 to 10 characters long !');
-                return false;
-            }
-            let LastNameReg = /^[a-zA-Z0-9]{3,10}$/;
-            if (!LastNameReg.test(LastName)) {
-                alert('Last Name is required and can only use upper and lower case letters and is 3 to 10 characters long !');
-                return false;
-            }
-            let EmailaddressReg = /^[a-zA-Z0-9_\-]+@([a-z A-Z 0-9]+\.)+(com|cn|net|org)$/;
-            if (Emailaddress.length > 0) {
-                //因为邮箱不是必填，所以先检查邮箱是否有输入
-                // Stellen Sie sicher, dass die E-Mail-Adresse zuerst eingegeben wird, da sie nicht erforderlich ist.
-                if (!EmailaddressReg.test(Emailaddress)) {
-                    alert('Incorrect mailbox format ! ! !');
-                    return false;
-                }
-            }
-            let PasswordReg = /^[a-zA-Z0-9_*]{6,10}$/;
-            if (OPassword.length > 0)
-            {
-                if (!PasswordReg.test(NPassword)) {
-                    alert('Password is required and can only be composed of upper and lower case letters and numbers and _ *, 6 to 10 characters long !');
-                    return false;
-                }
-                else {
-                    if (NPassword != CPassword)
-                    {
-                        alert('Password and confirmation password must be the same ! ! !');
-                        return false;
-                    }
-                }
-            }
-            return ture;
+    function check() {
+        let first_name = document.getElementsByName('first_name')[0].value.trim();
+        let last_name = document.getElementsByName('last_name')[0].value.trim();
+        let Email = document.getElementsByName('email')[0].value.trim();
+        let OPassword = document.getElementsByName('OPassword')[0].value.trim();
+        let NPassword = document.getElementsByName('NPassword')[0].value.trim();
+        let CPassword = document.getElementsByName('CPassword')[0].value.trim();
+        //验证输入数据，同时去除用户错误输入的空格
+        // Validierung der Eingabedaten und Entfernen von Leerzeichen, die vom Benutzer falsch eingegeben wurden
+        let FirstNameReg = /^[a-zA-Z0-9]{3,10}$/;
+        if (!FirstNameReg.test(FirstName)) {
+            alert('First Name is required and can only use upper and lower case letters and is 3 to 10 characters long !');
+            return false;
         }
-    </script>
+        let LastNameReg = /^[a-zA-Z0-9]{3,10}$/;
+        if (!LastNameReg.test(LastName)) {
+            alert('Last Name is required and can only use upper and lower case letters and is 3 to 10 characters long !');
+            return false;
+        }
+        let EmailaddressReg = /^[a-zA-Z0-9_\-]+@([a-z A-Z 0-9]+\.)+(com|cn|net|org|at)$/;
+        if (Emailaddress.length > 0) {
+            //因为邮箱不是必填，所以先检查邮箱是否有输入
+            // Stellen Sie sicher, dass die E-Mail-Adresse zuerst eingegeben wird, da sie nicht erforderlich ist.
+            if (!EmailaddressReg.test(Emailaddress)) {
+                alert('Incorrect mailbox format ! ! !');
+                return false;
+            }
+        }
+        let PasswordReg = /^[a-zA-Z0-9_*]{6,10}$/;
+        if (OPassword.length > 0)
+        {
+            if (!PasswordReg.test(NPassword)) {
+                alert('Password is required and can only be composed of upper and lower case letters and numbers and _ *, 6 to 10 characters long !');
+                return false;
+            }
+            else {
+                if (NPassword != CPassword)
+                {
+                    alert('Password and confirmation password must be the same ! ! !');
+                    return false;
+                }
+            }
+        }
+        return ture;
+    }
+</script>

@@ -21,7 +21,7 @@
                     //通过判断用户是否登录来显示不同的选项 
                     //Anzeige verschiedener Optionen, je nachdem, ob der Benutzer angemeldet ist oder nicht
                 ?>
-                    <a class="nav-link fw-bold <?= ($site == "usermodify") ? "active" : "" ?>" href="?site=usermodify">|<?php echo $_SESSION['username'];?>|</a>
+                    <a class="nav-link fw-bold <?= ($site == "usermodify") ? "active" : "" ?>" href="?site=usermodify">| <?php echo $_SESSION['firstname'];?> |</a>
                 <?php
                     }
                 ?>

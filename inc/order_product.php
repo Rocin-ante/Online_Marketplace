@@ -31,11 +31,20 @@
           include_once 'config/dbaccess.php';
           if ($_SESSION['isAdmin'] == 1)
           {
-              $sql = "SELECT * from `order` ORDER BY `order_id` desc";
+            $sql = "SELECT *
+            FROM `order` o
+            JOIN `users` u ON o.user_id = u.user_id
+            ORDER BY o.order_id DESC;
+            ";
           }
           else
           {
-              $sql = "SELECT * FROM `order` where `user_id` = '".$_SESSION["userID"]."' ORDER BY `order_id` DESC";
+            $sql = "SELECT *
+            FROM `order`
+            JOIN `users` ON `order`.`user_id` = `users`.`user_id`
+            WHERE `order`.`user_id` = '".$_SESSION["userID"]."'
+            ORDER BY `order`.`order_id` DESC
+            ";
           }
           $result = mysqli_query($conn, $sql);
           while ($row = mysqli_fetch_array($result)) 
@@ -46,7 +55,7 @@
         <tr>
             <!-- <th scope="row">1</th> -->
             <td><?php echo $row['order_id'];?></td>
-            <td><?php echo $row['user_id'];?></td>
+            <td><?php echo $row['email'];?></td>
             <td><?php echo date('Y-m-d H:i:s', $row['order_date']);?></td>
             <td><?php echo $row['shipping_address'];?></td>
             <td><?php

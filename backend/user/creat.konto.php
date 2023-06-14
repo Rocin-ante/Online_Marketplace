@@ -150,13 +150,16 @@ function loginUser($conn, $email,$pwd){
         
         $_SESSION["username"] = $info["email"];
         $_SESSION["userID"] = $info["user_id"];
+        $_SESSION["firstname"] = $info["first_name"];
 
         $cookie_username = $info["email"];
         $cookie_userID = $info["user_id"];
-        $cookie_admin = $info['admin'];
+        $cookie_admin = $info["admin"];
+        $cookie_firstname = $info["first_name"];
         setcookie('username', $cookie_username, time()+(120), "/");
         setcookie('userID', $cookie_userID, time()+(120), "/");
         setcookie('admin', $cookie_admin, time()+(120), "/");
+        setcookie('firstname', $cookie_firstname, time()+(120), "/");
 
         echo "<script>alert('Login successful ! ! ! Welcome to the Online Shop ! ! !'); location.href='../../index.php'; </script>";
         exit();

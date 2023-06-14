@@ -43,7 +43,7 @@
                 <a href="./?site=usermodify&email=<?php echo $info['email'];?>">[modify]</a>  
                 <!--传递当前条目用户名到信息修改页面-->
                 <!--Übergabe des Benutzernamens des aktuellen Eintrags an die Seite zur Änderung der Informationen-->
-            <?php if($info['email'] <> 'admin') {?> <a 
+            <?php if($info['email'] <> 'admin@admin.com') {?> <a 
                 href="javascript:state(<?php echo $info['user_id'];?>, '<?php echo $info['email']; ?>', <?php echo $info['state'];?>);">[state]</a>
                 <!-- 判断用户是否是超级管理员，如果是则不能修改此属性。传递当前条目的id，用户名和活跃到脚本，用来查询和更改用户活跃属性 -->
                 <!-- Bestimmt, ob der Benutzer ein Superadmin ist; wenn ja, kann dieses Attribut nicht geändert werden. Übergibt die ID, den Benutzernamen und das Active des aktuellen Eintrags an das Skript, das zur Abfrage und Änderung des Active-Attributs des Benutzers verwendet wird -->
@@ -59,7 +59,7 @@
                 //Feststellen, ob der Benutzer ein Administrator ist
                 if($info['admin'])
                 {
-                    if ($info['email'] <> 'admin')
+                    if ($info['email'] <> 'admin@admin.com')
                     {
                 ?>
                 <a href="inc/setadmin.php?action=0&id=<?php echo $info['user_id'];?>">[cancel admin]</a>  
@@ -74,7 +74,7 @@
                         echo '<span style="color: gray">[cancel admin]</span>';
                     }
                 }else{
-                if ($info['email'] <> 'admin')
+                if ($info['email'] <> 'admin@admin.com')
                     {
                 ?>
                 <a href="inc/setadmin.php?action=1&id=<?php echo $info['user_id'];?>">[set admin]</a>
@@ -100,11 +100,11 @@
 <script>
     //通过js实现转跳到活跃度修改脚本，并传递用户信息到脚本
     //einen Sprung zum Skript zur Aktivitätsänderung über js implementieren und Benutzerinformationen an das Skript übergeben
-    function state (id, username, state)
+    function state (id, email, state)
     {
-        if (confirm('Are you sure you want to modify the active status of user ' + username + ' ?'))
+        if (confirm('Are you sure you want to modify the active status of user ' + email + ' ?'))
         {
-            location.href='inc/statususer.php?id=' + id + '&username=' + username + '&state=' +state;
+            location.href='inc/statususer.php?id=' + id + '&email=' + email + '&state=' +state;
         }
     }
 </script>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主机： 127.0.0.1
--- 生成日期： 2023-06-08 16:04:55
+-- 生成日期： 2023-06-15 14:59:14
 -- 服务器版本： 10.4.28-MariaDB
 -- PHP 版本： 8.2.4
 
@@ -60,6 +60,24 @@ CREATE TABLE `order` (
   `payment_method` int(11) NOT NULL,
   `order_status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- 转存表中的数据 `order`
+--
+
+INSERT INTO `order` (`order_id`, `user_id`, `product_id`, `quantity`, `unit_price`, `order_date`, `shipping_address`, `payment_method`, `order_status`) VALUES
+(1, 1, 1, 3, 50, 1686832974, 'Wehlistraße 35-43 6  602', 1, 0),
+(2, 2, 2, 2, 20, 1686833364, 'Wehlistraße 35-43 6  602', 2, 0),
+(3, 3, 3, 6, 10, 1686833409, 'Wehlistraße 35-43 6  602', 3, 0),
+(4, 4, 4, 1, 50, 1686833460, 'Wehlistraße 35-43 6  602', 2, 0),
+(5, 5, 5, 4, 50, 1686833510, 'Wehlistraße 39700 6 52', 3, 0),
+(6, 6, 6, 10, 20, 1686833560, 'Wehlistraße 66 9 91001', 1, 0),
+(7, 7, 8, 4, 10, 1686833770, 'Wehlistraße 35-43 8 008', 1, 0),
+(8, 7, 8, 1, 10, 1686833788, 'Wehlistraße 35-43 8 008', 3, 0),
+(9, 7, 8, 4, 10, 1686833800, 'Wehlistraße 35-43 8 008', 2, 0),
+(10, 1, 4, 4, 50, 1686833867, 'Wehlistraße 35-43 6  602', 1, 0),
+(11, 1, 4, 20, 50, 1686833877, 'Wehlistraße 35-43 6  602', 2, 0),
+(12, 1, 5, 1, 50, 1686833898, 'Wehlistraße 35-43 6  602', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -125,7 +143,6 @@ CREATE TABLE `users` (
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `shipping_address` varchar(200) NOT NULL,
-  `payment_method` int(11) NOT NULL,
   `admin` int(11) NOT NULL DEFAULT 0,
   `state` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -134,8 +151,14 @@ CREATE TABLE `users` (
 -- 转存表中的数据 `users`
 --
 
-INSERT INTO `users` (`user_id`, `email`, `password`, `first_name`, `last_name`, `shipping_address`, `payment_method`, `admin`, `state`) VALUES
-(1, 'admin@admin.com', '21232F297A57A5A743894A0E4A801FC3', 'admin', 'admin', 'admin', 0, 1, 1);
+INSERT INTO `users` (`user_id`, `email`, `password`, `first_name`, `last_name`, `shipping_address`, `admin`, `state`) VALUES
+(1, 'admin@admin.com', '$2y$10$.NFCLtZWBMt7KzlsI17TsOt1.QDyPJ1j4gibbbTFA9jsvh7vKngMK', 'admin', 'admin', 'admin', 1, 1),
+(2, 'test01@test.com', '$2y$10$B6giZKiyMS1rxSdnETFXOezwqw5dheJy1uHjFuw6v2VO3sJ0v/g3S', 'test01', 'test01', 'test01', 1, 1),
+(3, 'test02@test.com', '$2y$10$gOltpPKuj.V0.OZkKW8nJurR6OSLzKZl.oeufSvoB2fwbWKeWytdy', 'test02', 'test02', 'test02', 0, 1),
+(4, 'test03@test.com', '$2y$10$wTCi/fznjoXpeSsJ9TujUu.F1LDEnlAL7yPi.pHPD6qAnNvZYUJaS', 'test03', 'test03', 'test03', 0, 0),
+(5, 'myshop@test.at', '$2y$10$yQSpZvg0RJ7.gdRRpMMBb.sCkEVvVSKkV/1PwotRhGFwd19zvgB26', 'my', 'shop', 'my shop', 0, 1),
+(6, 'market@shop.cn', '$2y$10$lbANzHQ9m58hAq4dvsf3S.BgFWlLowcX3SkXRvUOTIAyO2mzsBzze', 'market', 'market', 'market', 0, 1),
+(7, 'peter@icloud.com', '$2y$10$PzoYMYCulrNwID.5O/SFsO.1fqME12iTxYQKYAtNo1eCC70teK..q', 'peter', 'G', 'Wehlistraße 35-43 5 530', 0, 1);
 
 --
 -- 转储表的索引
@@ -185,7 +208,7 @@ ALTER TABLE `category`
 -- 使用表AUTO_INCREMENT `order`
 --
 ALTER TABLE `order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- 使用表AUTO_INCREMENT `product`
@@ -203,7 +226,7 @@ ALTER TABLE `store`
 -- 使用表AUTO_INCREMENT `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

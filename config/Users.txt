@@ -1,0 +1,8 @@
+用户：
+用户1：超级管理员； 用户名：admin@admin.com；密码：admin
+用户2：普通管理员；用户名：test01@test.com；密码：test01
+用户3：活跃的账号；用户名：test02@test.com；密码：test02
+用户4：非活跃账号；用户名：test03@test.com；密码：test03
+用户5：活跃的账号；用户名：myshop@test.at；密码：myshop
+用户6：活跃的账号；用户名：market@shop.cn；密码：market
+用户7：活跃的账号；用户名：peter@icloud.com；密码：peter

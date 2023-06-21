@@ -6,3 +6,11 @@
 用户5：活跃的账号；用户名：myshop@test.at；密码：myshop
 用户6：活跃的账号；用户名：market@shop.cn；密码：market
 用户7：活跃的账号；用户名：peter@icloud.com；密码：peter
+
+User 1: Super administrator; Username: admin@admin.com; Password: admin
+User 2: Ordinary administrator; Username: test01@test.com; Password: test01
+User 3: Active account; Username: test02@test.com; Password: test02
+User 4: Inactive account; Username: test03@test.com; Password: test03
+User 5: Active account; Username: myshop@test.at; Password: myshop
+User 6: Active account; Username: market@shop.cn; Password: market
+User 7: Active account; Username: peter@icloud.com; assword: peter
